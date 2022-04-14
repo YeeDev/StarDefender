@@ -418,7 +418,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 292efaf8d99064eb9b74378c1fe48019, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waitTime: 1
+  speed: 1
   path:
   - {fileID: 6327507723168345821}
   - {fileID: 701612358}
