@@ -4,18 +4,22 @@ using UnityEngine;
 
 public class EnemyMover : MonoBehaviour
 {
+    [SerializeField] float waitTime = 1f;
     [SerializeField] List<Waypoint> path = new List<Waypoint>();
 
     private void Start()
     {
-        PrintWaypointName();
+        StartCoroutine(FollowPath());
     }
 
-    private void PrintWaypointName()
+    private IEnumerator FollowPath()
     {
         foreach (Waypoint waypoint in path)
         {
-            Debug.Log(waypoint.name);
+            Vector3 point = waypoint.transform.position;
+            point.y = transform.position.y;
+            transform.position = point;
+            yield return new WaitForSeconds(waitTime);
         }
     }
 }
