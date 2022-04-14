@@ -12,6 +12,7 @@ public class CoodinateLabeler : MonoBehaviour
     private void Awake()
     {
         label = GetComponentInChildren<TextMeshPro>();
+        CalculateCoordinate();
         DisplayCoordinates();
     }
 
