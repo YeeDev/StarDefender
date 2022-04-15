@@ -154,3 +154,4 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  shipAnimator: {fileID: 6236601098871766297}
