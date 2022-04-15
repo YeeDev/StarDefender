@@ -20,6 +20,10 @@ public class EnemyMover : MonoBehaviour
             Vector3 endPosition = waypoint.transform.position;
             endPosition.y = transform.position.y;
             float travelPercent = 0f;
+            Quaternion quaternion = Quaternion.LookRotation(waypoint.transform.position - transform.position, Vector3.up);
+            Vector3 euler = Vector3.zero;
+            euler.y = quaternion.eulerAngles.y;
+            transform.rotation = Quaternion.Euler(euler);
 
             while (travelPercent < 1f)
             {
