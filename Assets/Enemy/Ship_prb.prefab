@@ -114,7 +114,7 @@ GameObject:
   - component: {fileID: 2516346687884347005}
   - component: {fileID: 4869824464809662240}
   - component: {fileID: 2563100258390790628}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Ship_prb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -163,6 +163,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e31bd0cb34374fe4b54e465974f8c50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHitPoints: 10
 --- !u!65 &4869824464809662240
 BoxCollider:
   m_ObjectHideFlags: 0
