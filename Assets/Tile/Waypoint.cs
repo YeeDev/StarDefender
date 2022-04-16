@@ -9,7 +9,8 @@ public class Waypoint : MonoBehaviour
 
     Animator animator;
 
-    public bool GetIsCorner { get => isCorner; }
+    public bool IsCorner { get => isCorner; }
+    public bool CanPlaceTower { get => canPlaceTower; }
 
     private void Awake()
     {

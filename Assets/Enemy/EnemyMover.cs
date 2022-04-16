@@ -32,7 +32,7 @@ public class EnemyMover : MonoBehaviour
                 yield return new WaitForEndOfFrame();
             }
 
-            if (waypoint.GetIsCorner) { yield return RotateShip(path[i]); }
+            if (waypoint.IsCorner) { yield return RotateShip(path[i]); }
         }
     }
 

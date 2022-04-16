@@ -6,12 +6,19 @@ using TMPro;
 [ExecuteAlways]
 public class CoodinateLabeler : MonoBehaviour
 {
+    [SerializeField] Color defaultColor = Color.white;
+    [SerializeField] Color blockedColor = Color.grey;
+
     Vector2Int coordinates = new Vector2Int();
     TextMeshPro label;
+    Waypoint waypoint;
 
     private void Awake()
     {
         label = GetComponentInChildren<TextMeshPro>();
+        label.enabled = false;
+
+        waypoint = GetComponent<Waypoint>();
         CalculateCoordinate();
         DisplayCoordinates();
     }
@@ -23,6 +30,14 @@ public class CoodinateLabeler : MonoBehaviour
             CalculateCoordinate();
             DisplayCoordinates();
         }
+
+        ColorCoordinates();
+        ToggleLabels();
+    }
+
+    private void ToggleLabels()
+    {
+        if (Input.GetKeyDown(KeyCode.C)) { label.enabled = !label.IsActive(); }
     }
 
     private void CalculateCoordinate()
@@ -35,5 +50,10 @@ public class CoodinateLabeler : MonoBehaviour
     {
         label.text = coordinates.ToString();
         transform.name = coordinates.ToString();
+    }
+
+    private void ColorCoordinates()
+    {
+        label.color = waypoint.CanPlaceTower ? defaultColor : blockedColor;
     }
 }
