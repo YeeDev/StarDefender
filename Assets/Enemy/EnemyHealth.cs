@@ -8,11 +8,11 @@ public class EnemyHealth : MonoBehaviour
 
     int currentHitPoints = 0;
 
-    private void Awake() { currentHitPoints = maxHitPoints; }
+    private void OnEnable() { currentHitPoints = maxHitPoints; }
 
     private void OnParticleCollision(GameObject other)
     {
         currentHitPoints--;
-        if (currentHitPoints <= 0) { Destroy(gameObject); }
+        if (currentHitPoints <= 0) { gameObject.SetActive(false); }
     }
 }

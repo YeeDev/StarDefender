@@ -8,7 +8,7 @@ public class EnemyMover : MonoBehaviour
     [SerializeField] List<Waypoint> path = new List<Waypoint>();
     [SerializeField] Animator shipAnimator = null;
 
-    private void Start() { StartCoroutine(FollowPath()); }
+    private void OnEnable() { StartCoroutine(FollowPath()); }
 
     private IEnumerator FollowPath()
     {
@@ -46,11 +46,11 @@ public class EnemyMover : MonoBehaviour
         if (Vector3.Dot(transform.right, lookTarget) < 0) { shipAnimator.SetTrigger("TurningLeft"); }
         else { shipAnimator.SetTrigger("TurningRight"); }
 
-        float travelPercent = 0f;
-        while (travelPercent < 1f)
+        float rotationPercent = 0f;
+        while (rotationPercent < 1f)
         {
-            travelPercent += Time.deltaTime * speed;
-            transform.rotation = Quaternion.Lerp(startRotation, lookDirection, travelPercent);
+            rotationPercent += Time.deltaTime * speed;
+            transform.rotation = Quaternion.Lerp(startRotation, lookDirection, rotationPercent);
 
             yield return new WaitForEndOfFrame();
         }
