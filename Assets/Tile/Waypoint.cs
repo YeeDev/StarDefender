@@ -7,13 +7,20 @@ public class Waypoint : MonoBehaviour
     [SerializeField] bool canPlaceTower = false;
     [SerializeField] bool isCorner = false;
 
+    Animator animator;
+
     public bool GetIsCorner { get => isCorner; }
+
+    private void Awake()
+    {
+        if (canPlaceTower) { animator = GetComponent<Animator>(); }
+    }
 
     private void OnMouseDown()
     {
         if (canPlaceTower)
         {
-            Debug.Log(transform.name);
+            animator.SetBool("IsOpen", true);
         }
     }
 }

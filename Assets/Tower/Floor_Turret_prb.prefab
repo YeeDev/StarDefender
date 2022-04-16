@@ -370,6 +370,9 @@ GameObject:
   - component: {fileID: 3634787523552155740}
   - component: {fileID: 3634787523552155743}
   - component: {fileID: 2119526568}
+  - component: {fileID: 950529923351351675}
+  - component: {fileID: -269532858646002550}
+  - component: {fileID: 1114052947736670637}
   m_Layer: 0
   m_Name: Floor_Turret_prb
   m_TagString: Untagged
@@ -386,7 +389,7 @@ Transform:
   m_GameObject: {fileID: 3634787523552155729}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 3634787524273624348}
   - {fileID: 3634787523645387246}
@@ -462,6 +465,47 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!65 &950529923351351675
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3634787523552155729}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2, y: 0.2, z: 2}
+  m_Center: {x: 0, y: 0.1, z: 0}
+--- !u!114 &-269532858646002550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3634787523552155729}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21d6f1a9e434c4c4786b193d36d18779, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canPlaceTower: 1
+  isCorner: 0
+--- !u!114 &1114052947736670637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3634787523552155729}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a14cc67370c044c55a4a7b8c31c9a2e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  towerHead: {fileID: 8188161971074786217}
 --- !u!1 &3634787523645387233
 GameObject:
   m_ObjectHideFlags: 0
