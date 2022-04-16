@@ -111,6 +111,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6236601099967696530}
   - component: {fileID: 1654319808}
+  - component: {fileID: 2516346687884347005}
   - component: {fileID: 4869824464809662240}
   - component: {fileID: 2563100258390790628}
   m_Layer: 0
@@ -150,6 +151,18 @@ MonoBehaviour:
   speed: 1
   path: []
   shipAnimator: {fileID: 6236601098871766297}
+--- !u!114 &2516346687884347005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6236601099967696621}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e31bd0cb34374fe4b54e465974f8c50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!65 &4869824464809662240
 BoxCollider:
   m_ObjectHideFlags: 0
