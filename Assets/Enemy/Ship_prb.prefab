@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 6236601098871766299}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -0.1, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_Children: []
   m_Father: {fileID: 6236601099967696530}
   m_RootOrder: 0
@@ -111,6 +111,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6236601099967696530}
   - component: {fileID: 1654319808}
+  - component: {fileID: 4869824464809662240}
+  - component: {fileID: 2563100258390790628}
   m_Layer: 0
   m_Name: Ship_prb
   m_TagString: Untagged
@@ -148,3 +150,29 @@ MonoBehaviour:
   speed: 1
   path: []
   shipAnimator: {fileID: 6236601098871766297}
+--- !u!65 &4869824464809662240
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6236601099967696621}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.1575, y: 0.16, z: 0.485}
+  m_Center: {x: 0, y: -0.02, z: 0.04}
+--- !u!65 &2563100258390790628
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6236601099967696621}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.57, y: 0.16, z: 0.1}
+  m_Center: {x: 0, y: -0.02, z: -0.08}
