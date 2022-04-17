@@ -9,11 +9,25 @@ public class TargetLocator : MonoBehaviour
     [SerializeField] Transform towerHead = null;
     [SerializeField] LayerMask enemyLayer = 0;
 
+    Animator animator;
+    AudioSource audioSource;
     Transform mainTarget = null;
+
+    //Called in animation
+    private void PlayLaserShoot() { audioSource.Play(); }
+
+    private void Awake()
+    {
+        animator = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
+    }
 
     private void Update()
     {
+        if (!animator.GetBool("IsOpen")) { return; }
+
         LocateClosestTarget();
+        ShootTarget();
         towerHead.LookAt(mainTarget);
     }
 
@@ -35,6 +49,11 @@ public class TargetLocator : MonoBehaviour
         }
 
         mainTarget = closestTarget;
+    }
+
+    private void ShootTarget()
+    {
+        animator.SetBool("IsShooting", mainTarget != null);
     }
 
     private void OnDrawGizmos()

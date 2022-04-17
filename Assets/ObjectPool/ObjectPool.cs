@@ -23,7 +23,7 @@ public class ObjectPool : MonoBehaviour
     {
         for (int i = 0; i < poolSize; i++)
         {
-            GameObject instance = Instantiate(enemyPrefab, transform);
+            Instantiate(enemyPrefab, transform);
             transform.GetChild(transform.childCount - 1).gameObject.SetActive(false);
         }
     }
