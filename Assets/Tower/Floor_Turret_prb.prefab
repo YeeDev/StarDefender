@@ -375,6 +375,7 @@ GameObject:
   - component: {fileID: -269532858646002550}
   - component: {fileID: 1114052947736670637}
   - component: {fileID: 8532010115903054407}
+  - component: {fileID: -2604564056120845851}
   - component: {fileID: 7633931858329813250}
   m_Layer: 0
   m_Name: Floor_Turret_prb
@@ -494,7 +495,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21d6f1a9e434c4c4786b193d36d18779, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canPlaceTower: 1
+  tower: {fileID: -2604564056120845851}
   isCorner: 0
 --- !u!114 &1114052947736670637
 MonoBehaviour:
@@ -528,6 +529,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultColor: {r: 1, g: 1, b: 1, a: 1}
   blockedColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+--- !u!114 &-2604564056120845851
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3634787523552155729}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebb2f736c563542a3966f0ae7797e13b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  activatedColor: {r: 0, g: 1, b: 0, a: 1}
+  nextToDeactivateColor: {r: 1, g: 0, b: 0, a: 1}
+  indicator: {fileID: 3634787524273624349}
 --- !u!82 &7633931858329813250
 AudioSource:
   m_ObjectHideFlags: 0
@@ -917,7 +933,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: (0, 0)
+  m_text: (0, 1)
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

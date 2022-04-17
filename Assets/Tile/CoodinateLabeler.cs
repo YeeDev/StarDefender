@@ -31,7 +31,6 @@ public class CoodinateLabeler : MonoBehaviour
             DisplayCoordinates();
         }
 
-        ColorCoordinates();
         ToggleLabels();
     }
 
@@ -50,10 +49,5 @@ public class CoodinateLabeler : MonoBehaviour
     {
         label.text = coordinates.ToString();
         transform.name = coordinates.ToString();
-    }
-
-    private void ColorCoordinates()
-    {
-        label.color = waypoint.CanPlaceTower ? defaultColor : blockedColor;
     }
 }

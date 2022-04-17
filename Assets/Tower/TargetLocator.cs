@@ -5,7 +5,6 @@ using UnityEngine;
 public class TargetLocator : MonoBehaviour
 {
     [SerializeField] float attackRange = 5f;
-    [SerializeField] Transform target = null;
     [SerializeField] Transform towerHead = null;
     [SerializeField] LayerMask enemyLayer = 0;
 
@@ -24,7 +23,11 @@ public class TargetLocator : MonoBehaviour
 
     private void Update()
     {
-        if (!animator.GetBool("IsOpen")) { return; }
+        if (!animator.GetBool("IsOpen"))
+        {
+            towerHead.rotation = Quaternion.identity;
+            return;
+        }
 
         LocateClosestTarget();
         ShootTarget();
@@ -51,10 +54,7 @@ public class TargetLocator : MonoBehaviour
         mainTarget = closestTarget;
     }
 
-    private void ShootTarget()
-    {
-        animator.SetBool("IsShooting", mainTarget != null);
-    }
+    private void ShootTarget() { animator.SetBool("IsShooting", mainTarget != null); }
 
     private void OnDrawGizmos()
     {

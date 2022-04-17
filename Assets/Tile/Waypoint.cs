@@ -4,24 +4,22 @@ using UnityEngine;
 
 public class Waypoint : MonoBehaviour
 {
-    [SerializeField] bool canPlaceTower = false;
+    [SerializeField] Tower tower = null;
     [SerializeField] bool isCorner = false;
 
-    Animator animator;
+    EnergyBank energyBank;
 
     public bool IsCorner { get => isCorner; }
-    public bool CanPlaceTower { get => canPlaceTower; }
 
-    private void Awake()
-    {
-        if (canPlaceTower) { animator = GetComponent<Animator>(); }
-    }
+    private void Awake() { energyBank = FindObjectOfType<EnergyBank>(); }
 
     private void OnMouseDown()
     {
-        if (canPlaceTower)
+        if (tower != null)
         {
-            animator.SetBool("IsOpen", true);
+            energyBank.AddActiveTower(tower.ActivateTower());
+            energyBank.CheckIfDeactivateTower();
+            energyBank.SetTowerIndicator();
         }
     }
 }
