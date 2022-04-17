@@ -8,6 +8,8 @@ public class EnergyBank : MonoBehaviour
 
     List<Tower> activeTowers = new List<Tower>();
 
+    public int GetMaxActiveTowers { get => maxActiveTowers; }
+
     //Called in Waypoint
     public void AddActiveTower(Tower towerToAdd)
     {
