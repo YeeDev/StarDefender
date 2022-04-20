@@ -8,17 +8,19 @@ public class CoodinateLabeler : MonoBehaviour
 {
     [SerializeField] Color defaultColor = Color.white;
     [SerializeField] Color blockedColor = Color.grey;
+    [SerializeField] Color exploredColor = new Color(1f, 0.5f, 0f);
+    [SerializeField] Color pathColor = Color.blue;
 
     Vector2Int coordinates = new Vector2Int();
     TextMeshPro label;
-    Waypoint waypoint;
+    PathFinder pathFinder;
 
     private void Awake()
     {
+        pathFinder = FindObjectOfType<PathFinder>();
         label = GetComponentInChildren<TextMeshPro>();
         label.enabled = false;
 
-        waypoint = GetComponent<Waypoint>();
         CalculateCoordinate();
         DisplayCoordinates();
     }
@@ -32,6 +34,7 @@ public class CoodinateLabeler : MonoBehaviour
         }
 
         ToggleLabels();
+        SetLabelColor();
     }
 
     private void ToggleLabels()
@@ -49,5 +52,19 @@ public class CoodinateLabeler : MonoBehaviour
     {
         label.text = coordinates.ToString();
         transform.name = coordinates.ToString();
+    }
+
+    private void SetLabelColor()
+    {
+        if (pathFinder == null) { return; }
+
+        Node node = pathFinder.GetNode(coordinates);
+
+        if (node == null) { return; }
+
+        if (node.isWalkable) { label.color = blockedColor; }
+        else if (node.isPath) { label.color = pathColor; }
+        else if (node.isExplored) { label.color = exploredColor; }
+        else { label.color = defaultColor; }
     }
 }
