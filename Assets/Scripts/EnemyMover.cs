@@ -1,26 +1,31 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyMover : MonoBehaviour
 {
     [SerializeField] [Range(0f, 10f)] float speed = 1f;
-    [SerializeField] List<Waypoint> path = new List<Waypoint>();
     [SerializeField] Animator shipAnimator = null;
+
+    PathFinder pathFinder;
+
+    private void Awake() { pathFinder = FindObjectOfType<PathFinder>(); }
 
     private void OnEnable() { StartCoroutine(FollowPath()); }
 
     private IEnumerator FollowPath()
     {
         int i = 0;
-        foreach (Waypoint waypoint in path)
+
+        LookAtStartingTile();
+
+        foreach (Tile tile in pathFinder.GetPath)
         {
             i++;
             Vector3 startPosition = transform.position;
-            Vector3 endPosition = waypoint.transform.position;
+            Vector3 endPosition = tile.transform.position;
             endPosition.y = transform.position.y;
 
-            RotateShip(waypoint);
+            RotateShip(tile);
 
             float travelPercent = 0f;
 
@@ -32,14 +37,21 @@ public class EnemyMover : MonoBehaviour
                 yield return new WaitForEndOfFrame();
             }
 
-            if (waypoint.IsCorner) { yield return RotateShip(path[i]); }
+            if (tile.IsCorner) { yield return RotateShip(pathFinder.GetPath[i]); }
         }
     }
 
-    private IEnumerator RotateShip(Waypoint waypoint)
+    private void LookAtStartingTile()
+    {
+        Vector3 lookTarget = pathFinder.GetPath[0].transform.position - transform.position;
+        lookTarget.y = 0;
+        transform.rotation = Quaternion.LookRotation(lookTarget, Vector3.up);
+    }
+
+    private IEnumerator RotateShip(Tile tile)
     {
         Quaternion startRotation = transform.rotation;
-        Vector3 lookTarget = waypoint.transform.position - transform.position;
+        Vector3 lookTarget = tile.transform.position - transform.position;
         lookTarget.y = 0;
         Quaternion lookDirection = Quaternion.LookRotation(lookTarget, Vector3.up);
 
