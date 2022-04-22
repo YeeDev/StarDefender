@@ -14,10 +14,11 @@ public class EnemyMover : MonoBehaviour
 
     private IEnumerator FollowPath()
     {
-        int i = 0;
+        yield return new WaitForEndOfFrame(); //Prevents OnEnable and Awake racing issue.
 
         LookAtStartingTile();
 
+        int i = 0;
         foreach (Tile tile in pathFinder.GetPath)
         {
             i++;
