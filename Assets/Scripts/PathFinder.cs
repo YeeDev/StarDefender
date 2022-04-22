@@ -8,6 +8,8 @@ public class PathFinder : MonoBehaviour
     [Tooltip("Unity's Grid Snap Settings")]
     [SerializeField] int unityGridSize = 1;
 
+    Tile tileToExplore;
+    Queue<Tile> tilesToExplore = new Queue<Tile>();
     List<Tile> path = new List<Tile>();
     Vector2Int[] directions = { Vector2Int.right, Vector2Int.up, Vector2Int.down, Vector2Int.left };
     Dictionary<Vector2Int, Tile> tiles = new Dictionary<Vector2Int, Tile>();
@@ -16,8 +18,9 @@ public class PathFinder : MonoBehaviour
 
     private void Awake()
     {
+        tilesToExplore.Enqueue(startTile);
         CreateTilesDictionary();
-        SetTileConnections(startTile);
+        BreathFirstSearch();
         CreatePath();
     }
 
@@ -44,39 +47,50 @@ public class PathFinder : MonoBehaviour
         return coordinates;
     }
 
-    //Creates the Flow Field
-    private void SetTileConnections(Tile tileToSearch)
+    private void BreathFirstSearch()
     {
-        tileToSearch.HasBeenExplored = true;
+        bool searching = true;
+        while (searching)
+        {
+            tileToExplore = tilesToExplore.Dequeue();
+            tileToExplore.HasBeenExplored = true;
+            ExploreNeighbors();
 
+            if (tileToExplore == endTile)
+            {
+                searching = false;
+            }
+        }
+    }
+
+    private void ExploreNeighbors()
+    {
         foreach (Vector2Int direction in directions)
         {
-            Vector2Int coordinateToCheck = tileToSearch.Coordinates + direction;
+            Vector2Int coordinateToCheck = tileToExplore.Coordinates + direction;
 
             if (tiles.ContainsKey(coordinateToCheck) && !tiles[coordinateToCheck].HasBeenExplored)
             {
-                tileToSearch.ConnectedTo = tiles[coordinateToCheck];
-                tileToSearch = tiles[coordinateToCheck];
-                break;
+                Tile neighbor = tiles[coordinateToCheck];
+                neighbor.ConnectedTo = tileToExplore;
+                neighbor.HasBeenExplored = true;
+                tilesToExplore.Enqueue(neighbor);
             }
         }
-
-        if (tileToSearch == endTile) { return; }
-
-        SetTileConnections(tileToSearch);
     }
 
     private void CreatePath()
     {
-        path = new List<Tile>();
-        Tile addedTile = startTile;
+        Tile currentTile = endTile;
 
-        while (addedTile != endTile)
+        path.Add(currentTile);
+
+        while (currentTile.ConnectedTo != null)
         {
-            path.Add(addedTile);
-            addedTile = addedTile.ConnectedTo;
+            currentTile = currentTile.ConnectedTo;
+            path.Add(currentTile);
         }
 
-        path.Add(endTile);
+        path.Reverse();
     }
 }
