@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: WaveTest 1
   m_EditorClassIdentifier: 
   numberOfEnemies: 2
-  spawnRate: 5
-  spawnCoordinates: {x: 7, y: 4}
-  firstTileCoordinates: {x: 6, y: 4}
+  spawnRate: 2
+  spawnCoordinates: {x: -1, y: 4}
+  firstTileCoordinates: {x: 0, y: 4}
