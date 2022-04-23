@@ -11,10 +11,22 @@ public class EnergyBank : MonoBehaviour
     public int GetMaxActiveTowers { get => maxActiveTowers; }
 
     //Called in Waypoint
-    public void AddActiveTower(Tower towerToAdd)
+    public bool AddActiveTower(Tower towerToAdd)
     {
+        if (activeTowers.Contains(towerToAdd))
+        {
+            towerToAdd.DeactivateTower();
+            activeTowers.Remove(towerToAdd);
+
+            if (activeTowers.Count > 0) { activeTowers.First().SetActiveIndicator(); }
+
+            return false;
+        }
+
         activeTowers.Add(towerToAdd);
         towerToAdd.SetActiveIndicator();
+
+        return true;
     }
 
     //Called in Waypoint

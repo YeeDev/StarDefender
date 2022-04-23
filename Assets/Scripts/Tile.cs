@@ -20,9 +20,8 @@ public class Tile : MonoBehaviour
     
     private void OnMouseDown()
     {
-        if (tower != null)
+        if (tower != null && energyBank.AddActiveTower(tower.ActivateTower()))
         {
-            energyBank.AddActiveTower(tower.ActivateTower());
             energyBank.CheckIfDeactivateTower();
             energyBank.SetTowerIndicator();
         }
