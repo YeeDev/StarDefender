@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class EnemyMover : MonoBehaviour
 {
-    [SerializeField] [Range(0f, 10f)] float speed = 1f;
-    [SerializeField] Animator shipAnimator = null;
+    [SerializeField] [Range(1f, 100f)] float speed = 1f;
+    [SerializeField] [Range(1f, 100f)] float rotationSpeed = 1f;
 
     Tile startTile;
     List<Tile> path;
+    Animator animator;
     PathsHolder pathsHolder;
     PathFinder pathFinder;
 
@@ -16,6 +17,7 @@ public class EnemyMover : MonoBehaviour
 
     private void Awake()
     {
+        animator = GetComponent<Animator>();
         pathsHolder = FindObjectOfType<PathsHolder>();
         pathFinder = FindObjectOfType<PathFinder>();
     }
@@ -29,10 +31,10 @@ public class EnemyMover : MonoBehaviour
         path = pathsHolder.GetPath(startTile);
         LookAtStartingTile();
 
-        int i = 0;
-        foreach (Tile tile in path)
+        for (int i = 0; i < path.Count; i++)
         {
-            i++;
+            Tile tile = path[i];
+
             Vector3 startPosition = transform.position;
             Vector3 endPosition = tile.transform.position;
             endPosition.y = transform.position.y;
@@ -40,6 +42,8 @@ public class EnemyMover : MonoBehaviour
             RotateShip(tile);
 
             float travelPercent = 0f;
+
+            if (i == (path.Count - 1)) { animator.SetTrigger("Attack"); }
 
             while (travelPercent < 1f)
             {
@@ -49,7 +53,7 @@ public class EnemyMover : MonoBehaviour
                 yield return new WaitForEndOfFrame();
             }
 
-            if (tile.IsCorner) { yield return RotateShip(path[i]); }
+            if (tile.IsCorner) { yield return RotateShip(path[i + 1]); }
         }
     }
 
@@ -67,13 +71,13 @@ public class EnemyMover : MonoBehaviour
         lookTarget.y = 0;
         Quaternion lookDirection = Quaternion.LookRotation(lookTarget, Vector3.up);
 
-        if (Vector3.Dot(transform.right, lookTarget) < 0) { shipAnimator.SetTrigger("TurningLeft"); }
-        else { shipAnimator.SetTrigger("TurningRight"); }
+        if (Vector3.Dot(transform.right, lookTarget) < 0) { animator.SetTrigger("TurningLeft"); }
+        else { animator.SetTrigger("TurningRight"); }
 
         float rotationPercent = 0f;
         while (rotationPercent < 1f)
         {
-            rotationPercent += Time.deltaTime * speed;
+            rotationPercent += Time.deltaTime * rotationSpeed;
             transform.rotation = Quaternion.Lerp(startRotation, lookDirection, rotationPercent);
 
             yield return new WaitForEndOfFrame();

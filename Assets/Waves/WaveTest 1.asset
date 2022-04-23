@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b71525c11875344e4a17dd2ad6e52553, type: 3}
   m_Name: WaveTest 1
   m_EditorClassIdentifier: 
-  numberOfEnemies: 2
-  spawnRate: 2
+  numberOfEnemies: 1
+  spawnRate: 10
   spawnCoordinates: {x: -1, y: 4}
   firstTileCoordinates: {x: 0, y: 4}

@@ -18,4 +18,6 @@ public class EnemyHealth : MonoBehaviour
             gameObject.SetActive(false);
         }
     }
+
+    private void DeactivateShip() { gameObject.SetActive(false); }
 }
