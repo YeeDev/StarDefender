@@ -11,6 +11,8 @@ public class PathFinder : MonoBehaviour
     Queue<Tile> tilesToExplore = new Queue<Tile>();
     Dictionary<Vector2Int, Tile> tiles = new Dictionary<Vector2Int, Tile>();
 
+    public Tile GetTileByCoordinates(Vector2Int coordinates) { return tiles[coordinates]; }
+
     private void Awake() { CreateTilesDictionary(); }
 
     //Creates a reference of all tiles using their coordinates.

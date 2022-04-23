@@ -10,10 +10,15 @@ public class EnemyMover : MonoBehaviour
     Tile startTile;
     List<Tile> path;
     PathsHolder pathsHolder;
+    PathFinder pathFinder;
 
-    public Tile SetStartTile { set => startTile = value; }
+    public void SetStartTile(Vector2Int coordinates) { startTile = pathFinder.GetTileByCoordinates(coordinates); }
 
-    private void Awake() { pathsHolder = FindObjectOfType<PathsHolder>();}
+    private void Awake()
+    {
+        pathsHolder = FindObjectOfType<PathsHolder>();
+        pathFinder = FindObjectOfType<PathFinder>();
+    }
 
     private void OnEnable() { StartCoroutine(FollowPath());}
 

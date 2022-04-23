@@ -7,7 +7,7 @@ public class EnemyHealth : MonoBehaviour
 
     int currentHitPoints = 0;
 
-    private void OnEnable() { currentHitPoints = maxHitPoints; }
+    private void OnEnable() { currentHitPoints = maxHitPoints * 2; } //Factored by 2 to fix Particles Prewarm Bug
 
     private void OnParticleCollision(GameObject other)
     {
