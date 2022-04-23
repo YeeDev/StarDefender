@@ -6,7 +6,6 @@ public class Tile : MonoBehaviour
     [SerializeField] bool isCorner = false;
     [SerializeField] bool isPath = false;
 
-    bool hasBeenExplored;
     EnergyBank energyBank;
     Vector2Int coordinates;
     Tile connectedTo;
@@ -14,7 +13,6 @@ public class Tile : MonoBehaviour
     public bool IsPath { get => isPath; }
     public bool IsCorner { get => isCorner; }
     public bool IsTower { get => tower; }
-    public bool HasBeenExplored { get => hasBeenExplored; set => hasBeenExplored = value; }
     public Tile ConnectedTo { get => connectedTo; set => connectedTo = value; }
     public Vector2Int Coordinates { get => coordinates; set => coordinates = value; }
 

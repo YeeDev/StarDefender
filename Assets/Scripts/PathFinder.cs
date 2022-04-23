@@ -3,27 +3,17 @@ using UnityEngine;
 
 public class PathFinder : MonoBehaviour
 {
-    [SerializeField] Tile startTile = null;
-    [SerializeField] Tile endTile = null;
     [Tooltip("Unity's Grid Snap Settings")]
     [SerializeField] int unityGridSize = 1;
 
-    Tile tileToExplore;
-    Queue<Tile> tilesToExplore = new Queue<Tile>();
-    List<Tile> path = new List<Tile>();
     Vector2Int[] directions = { Vector2Int.right, Vector2Int.up, Vector2Int.down, Vector2Int.left };
+
+    Queue<Tile> tilesToExplore = new Queue<Tile>();
     Dictionary<Vector2Int, Tile> tiles = new Dictionary<Vector2Int, Tile>();
 
-    public List<Tile> GetPath { get => path; }
+    private void Awake() { CreateTilesDictionary(); }
 
-    private void Awake()
-    {
-        tilesToExplore.Enqueue(startTile);
-        CreateTilesDictionary();
-        BreathFirstSearch();
-        CreatePath();
-    }
-
+    //Creates a reference of all tiles using their coordinates.
     private void CreateTilesDictionary()
     {
         foreach (Transform child in transform)
@@ -47,14 +37,39 @@ public class PathFinder : MonoBehaviour
         return coordinates;
     }
 
-    private void BreathFirstSearch()
+    //Creates a path based on a starting tile and an endtile.
+    public List<Tile> CreatePath(Tile startTile, Tile endTile)
+    {
+        ClearFlow();
+
+        tilesToExplore.Enqueue(startTile);
+
+        BreathFirstSearch(endTile);
+
+        return GetPath(endTile);
+    }
+
+    //Clears all connections before looking for a new path.
+    private void ClearFlow()
+    {
+        foreach (var item in tiles)
+        {
+            tiles[item.Key].ConnectedTo = null;
+        }
+
+        tilesToExplore.Clear();
+    }
+
+    private void BreathFirstSearch(Tile endTile)
     {
         bool searching = true;
+        List<Tile> tilesInQueue = new List<Tile>();
+
         while (searching)
         {
-            tileToExplore = tilesToExplore.Dequeue();
-            tileToExplore.HasBeenExplored = true;
-            ExploreNeighbors();
+            Tile tileToExplore = tilesToExplore.Dequeue();
+            tilesInQueue.Add(tileToExplore);
+            ExploreNeighbors(tilesInQueue, tileToExplore);
 
             if (tileToExplore == endTile)
             {
@@ -63,24 +78,25 @@ public class PathFinder : MonoBehaviour
         }
     }
 
-    private void ExploreNeighbors()
+    private void ExploreNeighbors(List<Tile> tilesInQueue, Tile tileToExplore)
     {
         foreach (Vector2Int direction in directions)
         {
             Vector2Int coordinateToCheck = tileToExplore.Coordinates + direction;
+            Tile neighbor = tiles.ContainsKey(coordinateToCheck) ? tiles[coordinateToCheck] : null;
 
-            if (tiles.ContainsKey(coordinateToCheck) && !tiles[coordinateToCheck].HasBeenExplored)
+            if (neighbor != null && !tilesInQueue.Contains(neighbor))
             {
-                Tile neighbor = tiles[coordinateToCheck];
                 neighbor.ConnectedTo = tileToExplore;
-                neighbor.HasBeenExplored = true;
                 tilesToExplore.Enqueue(neighbor);
+                tilesInQueue.Add(neighbor);
             }
         }
     }
 
-    private void CreatePath()
+    private List<Tile> GetPath(Tile endTile)
     {
+        List<Tile> path = new List<Tile>();
         Tile currentTile = endTile;
 
         path.Add(currentTile);
@@ -92,5 +108,6 @@ public class PathFinder : MonoBehaviour
         }
 
         path.Reverse();
+        return path;
     }
 }
