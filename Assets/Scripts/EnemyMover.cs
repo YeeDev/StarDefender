@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyMover : MonoBehaviour
@@ -6,20 +7,25 @@ public class EnemyMover : MonoBehaviour
     [SerializeField] [Range(0f, 10f)] float speed = 1f;
     [SerializeField] Animator shipAnimator = null;
 
-    PathFinder pathFinder;
+    Tile startTile;
+    List<Tile> path;
+    PathsHolder pathsHolder;
 
-    private void Awake() { pathFinder = FindObjectOfType<PathFinder>(); }
+    public Tile SetStartTile { set => startTile = value; }
 
-    private void OnEnable() { StartCoroutine(FollowPath()); }
+    private void Awake() { pathsHolder = FindObjectOfType<PathsHolder>();}
+
+    private void OnEnable() { StartCoroutine(FollowPath());}
 
     private IEnumerator FollowPath()
     {
-        yield return new WaitForEndOfFrame(); //Prevents OnEnable and Awake racing issue.
+        yield return new WaitUntil(() => pathsHolder.GetPath(startTile) != null); //Prevents OnEnable and Awake racing issue.
 
+        path = pathsHolder.GetPath(startTile);
         LookAtStartingTile();
 
         int i = 0;
-        foreach (Tile tile in pathFinder.GetPath)
+        foreach (Tile tile in path)
         {
             i++;
             Vector3 startPosition = transform.position;
@@ -38,13 +44,13 @@ public class EnemyMover : MonoBehaviour
                 yield return new WaitForEndOfFrame();
             }
 
-            if (tile.IsCorner) { yield return RotateShip(pathFinder.GetPath[i]); }
+            if (tile.IsCorner) { yield return RotateShip(path[i]); }
         }
     }
 
     private void LookAtStartingTile()
     {
-        Vector3 lookTarget = pathFinder.GetPath[0].transform.position - transform.position;
+        Vector3 lookTarget = path[0].transform.position - transform.position;
         lookTarget.y = 0;
         transform.rotation = Quaternion.LookRotation(lookTarget, Vector3.up);
     }
