@@ -3,6 +3,7 @@ using UnityEngine;
 public class EnemyHealth : MonoBehaviour
 {
     [SerializeField] int maxHitPoints = 10;
+    [SerializeField] GameObject explosionParticles = null;
 
     int currentHitPoints = 0;
 
@@ -11,6 +12,10 @@ public class EnemyHealth : MonoBehaviour
     private void OnParticleCollision(GameObject other)
     {
         currentHitPoints--;
-        if (currentHitPoints <= 0) { gameObject.SetActive(false); }
+        if (currentHitPoints <= 0)
+        {
+            Instantiate(explosionParticles, transform.position, Quaternion.identity);
+            gameObject.SetActive(false);
+        }
     }
 }

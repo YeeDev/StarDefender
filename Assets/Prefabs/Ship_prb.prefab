@@ -149,7 +149,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1
-  path: []
   shipAnimator: {fileID: 6236601098871766297}
 --- !u!114 &2516346687884347005
 MonoBehaviour:
@@ -164,6 +163,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHitPoints: 10
+  explosionParticles: {fileID: 2200199025619967280, guid: 986a26b3838914861adc0e3b8252db79, type: 3}
 --- !u!65 &4869824464809662240
 BoxCollider:
   m_ObjectHideFlags: 0
