@@ -4,27 +4,37 @@ using UnityEngine;
 
 public class WaveOrganizer : MonoBehaviour
 {
-    [SerializeField] Wave wave = null;
+    [SerializeField] Wave[] waves = null;
 
     ObjectPool pool;
 
     private void Awake() { pool = FindObjectOfType<ObjectPool>(); } 
 
-    private void Start() { StartCoroutine(RunWave()); }
+    private void Start() { StartCoroutine(ExecuteWaves()); }
 
-    private IEnumerator RunWave()
+    private IEnumerator ExecuteWaves()
     {
-        for (int i = 0; i < wave.NumberOfEnemies; i++)
+        foreach (Wave wave in waves)
+        {
+            yield return StartCoroutine(RunWave(wave));
+        }
+
+        Debug.Log("Waves Ended");
+    }
+
+    private IEnumerator RunWave(Wave waveToRun)
+    {
+        for (int i = 0; i < waveToRun.NumberOfEnemies; i++)
         {
             EnemyMover enemy = pool.GetEnemy();
-            enemy.SetStartTile(wave.StartCoordinates);
+            enemy.SetStartTile(waveToRun.StartCoordinates);
 
-            Vector3 spawnPoint = new Vector3(wave.SpawnCoordinates.x, enemy.transform.position.y, wave.SpawnCoordinates.y);
+            Vector3 spawnPoint = new Vector3(waveToRun.SpawnCoordinates.x, enemy.transform.position.y, waveToRun.SpawnCoordinates.y);
             enemy.transform.position = spawnPoint;
 
             enemy.gameObject.SetActive(true);
 
-            yield return new WaitForSeconds(wave.SpawnRate);
+            yield return new WaitForSeconds(waveToRun.SpawnRate);
         }
     }
 }
