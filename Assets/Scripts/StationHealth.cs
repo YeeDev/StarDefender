@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System;
 using UnityEngine;
 
@@ -5,42 +6,31 @@ public class StationHealth : MonoBehaviour
 {
     public event Action OnTakeDamage;
 
-    [SerializeField] ParticleSystem explosion = null;
+    [SerializeField] Color defaultColor = Color.blue;
+    [SerializeField] Color damageColor = Color.red;
 
-    int healthPoints = 5;
-    Animator animator;
-    AudioSource audioSource;
+    Queue<MeshRenderer> indicators = new Queue<MeshRenderer>();
 
-    public int GetHealthPoints { get => healthPoints; }
+    public int GetHealthRemaining { get => indicators.Count; }
 
-    private void Awake()
+    private void Awake() { CreateQueueAndSetColor(); }
+
+    private void CreateQueueAndSetColor()
     {
-        animator = GetComponent<Animator>();
-        audioSource = GetComponent<AudioSource>();
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("EnemyMissile"))
+        foreach (MeshRenderer childRenderer in GetComponentsInChildren<MeshRenderer>())
         {
-            Destroy(other.gameObject);
-            TakeDamage();
+            if (childRenderer.CompareTag("HealthIndicator"))
+            {
+                childRenderer.material.color = defaultColor;
+                indicators.Enqueue(childRenderer);
+            }
         }
     }
 
-    private void TakeDamage()
+    public void TakeDamage()
     {
-        healthPoints--;
-
-        PlaySpecialEffects();
+        indicators.Dequeue().material.color = damageColor;
 
         if (OnTakeDamage != null) { OnTakeDamage(); }
-    }
-
-    private void PlaySpecialEffects()
-    {
-        explosion.Play();
-        animator.SetTrigger("TakeDamage");
-        audioSource.Play();
     }
 }

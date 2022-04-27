@@ -17,7 +17,7 @@ public class Loader : MonoBehaviour
     private void OnEnable() { stationHealth.OnTakeDamage += ReloadLevel; }
     private void OnDisable() { stationHealth.OnTakeDamage -= ReloadLevel; }
 
-    private void ReloadLevel() { if (stationHealth.GetHealthPoints <= 0) { LoadLevel(currentLevel); } }
+    private void ReloadLevel() { if (stationHealth.GetHealthRemaining <= 0) { LoadLevel(currentLevel); } }
 
     private void LoadLevel(int levelToLoad) { SceneManager.LoadScene(levelToLoad); }
 }
