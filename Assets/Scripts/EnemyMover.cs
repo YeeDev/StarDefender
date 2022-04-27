@@ -6,6 +6,9 @@ public class EnemyMover : MonoBehaviour
 {
     [SerializeField] [Range(1f, 100f)] float speed = 1f;
     [SerializeField] [Range(1f, 100f)] float rotationSpeed = 1f;
+    [SerializeField] Transform muzzle = null;
+    [SerializeField] float missileSpeed = 1f;
+    [SerializeField] GameObject missilePrefab = null;
 
     Tile startTile;
     List<Tile> path;
@@ -82,5 +85,12 @@ public class EnemyMover : MonoBehaviour
 
             yield return new WaitForEndOfFrame();
         }
+    }
+
+    //Called in Animation "Ship_Attack"
+    private void Attack()
+    {
+        Rigidbody missile = Instantiate(missilePrefab, muzzle.position, Quaternion.identity).GetComponent<Rigidbody>();
+        missile.velocity = transform.forward * missileSpeed;
     }
 }

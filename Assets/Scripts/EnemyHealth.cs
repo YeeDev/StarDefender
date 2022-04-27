@@ -15,9 +15,10 @@ public class EnemyHealth : MonoBehaviour
         if (currentHitPoints <= 0)
         {
             Instantiate(explosionParticles, transform.position, Quaternion.identity);
-            gameObject.SetActive(false);
+            DeactivateShip();
         }
     }
 
+    //Also called in Animation "Ship_Attack"
     private void DeactivateShip() { gameObject.SetActive(false); }
 }
