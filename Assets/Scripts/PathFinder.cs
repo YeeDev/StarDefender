@@ -40,15 +40,16 @@ public class PathFinder : MonoBehaviour
     }
 
     //Creates a path based on a starting tile and an endtile.
-    public List<Tile> CreatePath(Tile startTile, Tile endTile)
+    //The tiles coordinates are set from the Waves Objetcs.
+    public List<Tile> CreatePath(Path path)
     {
         ClearFlow();
 
-        tilesToExplore.Enqueue(startTile);
+        tilesToExplore.Enqueue(GetTileByCoordinates(path.GetStartCoordinates));
 
-        BreathFirstSearch(endTile);
+        BreathFirstSearch(GetTileByCoordinates(path.GetEndCoordinates));
 
-        return GetPath(endTile);
+        return GetPath(GetTileByCoordinates(path.GetEndCoordinates));
     }
 
     //Clears all connections before looking for a new path.

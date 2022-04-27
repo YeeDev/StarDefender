@@ -3,22 +3,25 @@ using UnityEngine;
 
 public class PathsHolder : MonoBehaviour
 {
-    [SerializeField] Path[] paths = null;
-
+    List<Path> paths = new List<Path>();
+    WaveOrganizer waveOrganizer;
     PathFinder pathFinder;
 
     private void Awake()
     {
         pathFinder = GetComponent<PathFinder>();
+        waveOrganizer = FindObjectOfType<WaveOrganizer>();
 
         CreatePaths();
     }
 
     private void CreatePaths()
     {
-        foreach (Path path in paths)
+        foreach (Wave wave in waveOrganizer.GetWaves)
         {
-            path.SetPath = pathFinder.CreatePath(path.StartTile, path.EndTile);
+            Path path = new Path(wave.StartCoordinates, wave.GoalCoordinates);
+            path.SetPath = pathFinder.CreatePath(path);
+            paths.Add(path);
         }
     }
 
@@ -32,7 +35,7 @@ public class PathsHolder : MonoBehaviour
             } 
         }
 
-        Debug.LogWarning("Error: There's no path.");
+        Debug.LogWarning("Still Calculating Path");
         return null;
     }
 }

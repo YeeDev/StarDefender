@@ -8,6 +8,8 @@ public class WaveOrganizer : MonoBehaviour
 
     ObjectPool pool;
 
+    public Wave[] GetWaves { get => waves; }
+
     private void Awake() { pool = FindObjectOfType<ObjectPool>(); } 
 
     private void Start() { StartCoroutine(ExecuteWaves()); }
