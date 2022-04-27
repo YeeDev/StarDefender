@@ -9,25 +9,38 @@ public class StationHealth : MonoBehaviour
     [SerializeField] ParticleSystem explosion = null;
 
     Animator animator;
+    AudioSource audioSource;
 
     public int GetHealthPoints { get => maximumHealthPoints; }
 
-    private void Awake() { animator = GetComponent<Animator>(); }
+    private void Awake()
+    {
+        animator = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
+    }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("EnemyMissile"))
         {
-            TakeDamage(other.gameObject);
+            Destroy(other.gameObject);
+            TakeDamage();
         }
     }
 
-    private void TakeDamage(GameObject missile)
+    private void TakeDamage()
     {
-        Destroy(missile);
         maximumHealthPoints--;
+
+        PlaySpecialEffects();
+
+        if (OnTakeDamage != null) { OnTakeDamage(); }
+    }
+
+    private void PlaySpecialEffects()
+    {
         explosion.Play();
         animator.SetTrigger("TakeDamage");
-        if (OnTakeDamage != null) { OnTakeDamage(); }
+        audioSource.Play();
     }
 }
