@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   numberOfEnemies: 1
   spawnRate: 5
-  spawnCoordinates: {x: -1, y: 4}
-  firstTileCoordinates: {x: 0, y: 4}
+  spawnCoordinates: {x: -4, y: 4}
+  firstTileCoordinates: {x: -3, y: 4}
   endTileCoordinates: {x: 9, y: 2}
