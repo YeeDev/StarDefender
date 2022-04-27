@@ -8,7 +8,11 @@ public class StationHealth : MonoBehaviour
     [SerializeField] [Range(0, 100)] int maximumHealthPoints = 10;
     [SerializeField] ParticleSystem explosion = null;
 
+    Animator animator;
+
     public int GetHealthPoints { get => maximumHealthPoints; }
+
+    private void Awake() { animator = GetComponent<Animator>(); }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -23,6 +27,7 @@ public class StationHealth : MonoBehaviour
         Destroy(missile);
         maximumHealthPoints--;
         explosion.Play();
+        animator.SetTrigger("TakeDamage");
         if (OnTakeDamage != null) { OnTakeDamage(); }
     }
 }
