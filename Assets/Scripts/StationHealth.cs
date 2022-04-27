@@ -5,13 +5,13 @@ public class StationHealth : MonoBehaviour
 {
     public event Action OnTakeDamage;
 
-    [SerializeField] [Range(0, 100)] int maximumHealthPoints = 10;
     [SerializeField] ParticleSystem explosion = null;
 
+    int healthPoints = 5;
     Animator animator;
     AudioSource audioSource;
 
-    public int GetHealthPoints { get => maximumHealthPoints; }
+    public int GetHealthPoints { get => healthPoints; }
 
     private void Awake()
     {
@@ -30,7 +30,7 @@ public class StationHealth : MonoBehaviour
 
     private void TakeDamage()
     {
-        maximumHealthPoints--;
+        healthPoints--;
 
         PlaySpecialEffects();
 
