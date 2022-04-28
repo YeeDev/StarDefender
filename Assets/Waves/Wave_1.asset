@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Wave_1
   m_EditorClassIdentifier: 
   numberOfEnemies: 5
-  spawnRate: 5
+  spawnRate: 1
   spawnCoordinates: {x: -3, y: 2}
   firstTileCoordinates: {x: -2, y: 2}
   endTileCoordinates: {x: 9, y: 2}

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class WaveOrganizer : MonoBehaviour
 {
@@ -21,6 +22,8 @@ public class WaveOrganizer : MonoBehaviour
             yield return StartCoroutine(RunWave(wave));
         }
 
+        yield return new WaitUntil(() => AreAllEnemiesInactive());
+
         Debug.Log("Waves Ended");
     }
 
@@ -36,7 +39,14 @@ public class WaveOrganizer : MonoBehaviour
 
             enemy.gameObject.SetActive(true);
 
-            yield return new WaitForSeconds(waveToRun.SpawnRate);
+            if (i != waveToRun.NumberOfEnemies - 1) { yield return new WaitForSeconds(waveToRun.SpawnRate); }
         }
+    }
+
+    private bool AreAllEnemiesInactive()
+    {
+        List<Transform> enemies = pool.transform.Cast<Transform>().ToList();
+
+        return enemies.FirstOrDefault(x => x.gameObject.activeInHierarchy) == null;
     }
 }
