@@ -709,8 +709,8 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1530445444}
     m_Modifications:
-    - target: {fileID: 3435347611446442535, guid: 2da34f13961ff4fc3b0f822236f6bb08, type: 3}
-      propertyPath: m_LocalScale.y
+    - target: {fileID: 76295705904767461, guid: 2da34f13961ff4fc3b0f822236f6bb08, type: 3}
+      propertyPath: printSpeed
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3435347612170756346, guid: 2da34f13961ff4fc3b0f822236f6bb08, type: 3}
@@ -752,10 +752,6 @@ PrefabInstance:
     - target: {fileID: 3435347612170756347, guid: 2da34f13961ff4fc3b0f822236f6bb08, type: 3}
       propertyPath: m_SizeDelta.y
       value: 250
-      objectReference: {fileID: 0}
-    - target: {fileID: 3435347612170756347, guid: 2da34f13961ff4fc3b0f822236f6bb08, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3435347612170756347, guid: 2da34f13961ff4fc3b0f822236f6bb08, type: 3}
       propertyPath: m_LocalPosition.x
@@ -805,13 +801,33 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 5239329626809811129, guid: 2da34f13961ff4fc3b0f822236f6bb08, type: 3}
+      propertyPath: text
+      value: 
+      objectReference: {fileID: 204763074}
+    - target: {fileID: 5239329626809811129, guid: 2da34f13961ff4fc3b0f822236f6bb08, type: 3}
+      propertyPath: dialogue.dialogue
+      value: General Kenobi! <color=red>Glad you could join us!</color>
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5239329626809811129, guid: 2da34f13961ff4fc3b0f822236f6bb08, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 2da34f13961ff4fc3b0f822236f6bb08, type: 3}
 --- !u!224 &204763073 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3435347612170756347, guid: 2da34f13961ff4fc3b0f822236f6bb08, type: 3}
   m_PrefabInstance: {fileID: 204763072}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &204763074 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3435347612662901419, guid: 2da34f13961ff4fc3b0f822236f6bb08, type: 3}
+  m_PrefabInstance: {fileID: 204763072}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &221941889
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6034,6 +6050,52 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1e56a483a676c4fd38a8e61cd4c9d465, type: 3}
+--- !u!1 &1250026866
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1250026868}
+  - component: {fileID: 1250026867}
+  m_Layer: 0
+  m_Name: Game Sequencer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1250026867
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1250026866}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3f0119643857494da819758b9140f95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameSequence:
+  - {fileID: 11400000, guid: d72942ec9da384d528185048f97c8365, type: 2}
+  - {fileID: 11400000, guid: fb5d1f2fba9674f9294c89d75786c398, type: 2}
+--- !u!4 &1250026868
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1250026866}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1263866611
 GameObject:
   m_ObjectHideFlags: 0

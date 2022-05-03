@@ -4,11 +4,13 @@ using UnityEngine.UI;
 
 public class DialoguePrinter : MonoBehaviour
 {
+    [SerializeField][Range(0f, 10f)] float printSpeed = 0.1f;
+
     bool skip;
     bool inEndCode;
     string endCode = "";
 
-    private IEnumerator PrintDialogue(string textToPrint, Text text)
+    public IEnumerator PrintDialogue(string textToPrint, Text text)
     {
         string s = "";
         endCode = "";
@@ -50,10 +52,8 @@ public class DialoguePrinter : MonoBehaviour
 
             text.text = s + endCode;
 
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSecondsRealtime(printSpeed);
         }
-
-        Debug.Log("Finish printing");
     }
 
     private void SearchForEndCode(string text)
