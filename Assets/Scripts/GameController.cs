@@ -17,15 +17,9 @@ public class GameController : MonoBehaviour
 
     IEnumerator PlayGameSequence()
     {
-        commanderAnimator.SetBool("IsOpen", true);
-
-        yield return new WaitForSeconds(0.75f);
-
         foreach (IGameSequence sequence in gameSequence)
         {
             yield return sequence.PlaySequence(printer, text);
         }
-
-        commanderAnimator.SetBool("IsOpen", false);
     }
 }

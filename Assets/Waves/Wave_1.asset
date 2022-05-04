@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Wave_1
   m_EditorClassIdentifier: 
   numberOfEnemies: 5
-  spawnRate: 1
+  spawnRate: 5
   spawnCoordinates: {x: -3, y: 2}
   firstTileCoordinates: {x: -2, y: 2}
   endTileCoordinates: {x: 9, y: 2}
+  enemyType: {fileID: 6236601099967696621, guid: 4b5bc98a93e114a2e9d081cc21a16abb, type: 3}

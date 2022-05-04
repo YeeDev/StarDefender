@@ -17,3 +17,4 @@ MonoBehaviour:
   spawnCoordinates: {x: -4, y: 4}
   firstTileCoordinates: {x: -3, y: 4}
   endTileCoordinates: {x: 9, y: 2}
+  enemyType: {fileID: 6236601099967696621, guid: 4b5bc98a93e114a2e9d081cc21a16abb, type: 3}
