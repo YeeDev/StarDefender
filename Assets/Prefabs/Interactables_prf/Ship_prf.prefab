@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1016377805862053578}
+  - component: {fileID: 2754425565408217076}
   - component: {fileID: 1016377805862053579}
   m_Layer: 0
   m_Name: Ship_prf
@@ -32,6 +33,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &2754425565408217076
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1016377805862053576}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 71070493f1b3f464e804c73636c886d3, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &1016377805862053579
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -44,9 +64,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89528761265074dc181b512bdc90a573, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.05
-  rotationSpeed: 1
+  speed: 2
+  rotationSpeed: 6
   pathArray:
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
@@ -71,7 +93,6 @@ GameObject:
   - component: {fileID: 1016377806060194253}
   - component: {fileID: 1016377806060194254}
   - component: {fileID: 1016377806060194255}
-  - component: {fileID: 1016377806060194252}
   m_Layer: 0
   m_Name: Mesh And Animator
   m_TagString: Untagged
@@ -142,22 +163,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!95 &1016377806060194252
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1016377806060194242}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 26139bc25fb8846d2a062e6b71554a65, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
