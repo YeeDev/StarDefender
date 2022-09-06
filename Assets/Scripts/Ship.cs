@@ -9,6 +9,7 @@ public class Ship : MonoBehaviour
 {
     [SerializeField] float speed = 2f;
     [SerializeField] float rotationSpeed = 3f;
+    [SerializeField] float missileSpeed = 2.5f;
     [SerializeField] GameObject missilePrefab = null;
     [SerializeField] Transform hardpoint = null;
     [Header("Debug, remove later")]
@@ -68,7 +69,8 @@ public class Ship : MonoBehaviour
     private void Shoot()
     {
         missileFired = true;
-        Instantiate(missilePrefab, hardpoint.position, hardpoint.rotation);
+        Rigidbody missile = Instantiate(missilePrefab, hardpoint.position, hardpoint.rotation).GetComponent<Rigidbody>();
+        missile.velocity = transform.forward * missileSpeed;
     }
 
     //TODO Grab it from another place, not here
