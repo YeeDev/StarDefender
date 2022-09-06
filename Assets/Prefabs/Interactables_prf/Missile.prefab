@@ -4816,7 +4816,7 @@ GameObject:
   - component: {fileID: 2967642113568274912}
   - component: {fileID: 2967642113568274913}
   - component: {fileID: 2967642113568274914}
-  - component: {fileID: 1389582738}
+  - component: {fileID: 8122159478987519932}
   m_Layer: 0
   m_Name: Missile
   m_TagString: Untagged
@@ -4896,21 +4896,24 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2967642113568274915}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1389582738
-MonoBehaviour:
+--- !u!54 &8122159478987519932
+Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2967642113568274915}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 24249efaaeb3946458c5a2de6e466a9d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 2
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
