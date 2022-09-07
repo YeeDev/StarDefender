@@ -93,7 +93,7 @@ GameObject:
   - component: {fileID: 561711951988149400}
   - component: {fileID: 561711951988149401}
   m_Layer: 0
-  m_Name: DualEnergy_N
+  m_Name: EnergyDual_N
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
