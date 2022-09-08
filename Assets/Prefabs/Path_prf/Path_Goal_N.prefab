@@ -94,3 +94,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95e8d1d8b4d7e4d61ac258af233e12b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  unityGridSize: 2
+  isPath: 0
