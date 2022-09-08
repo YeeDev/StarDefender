@@ -2,83 +2,81 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-//TODO Add to a namespace
-//TODO Ships need to die
-[RequireComponent(typeof(Animator))]
-public class Ship : MonoBehaviour
+namespace StarDef.Enemies
 {
-    [SerializeField] float speed = 2f;
-    [SerializeField] float rotationSpeed = 3f;
-    [SerializeField] float missileSpeed = 2.5f;
-    [SerializeField] GameObject missilePrefab = null;
-    [SerializeField] Transform hardpoint = null;
-
-    int objectToMoveTo = 0;
-    bool rotating;
-    bool missileFired;
-    Animator anm;
-    List<Transform> path = null;
-
-    private void Awake() { anm = GetComponent<Animator>(); }
-
-    private void Start()
+    [RequireComponent(typeof(Animator))]
+    public class Ship : MonoBehaviour
     {
-        path = FindObjectOfType<PathFinder>().GetPath;
-    }
+        [SerializeField] float speed = 2f;
+        [SerializeField] float rotationSpeed = 3f;
+        [SerializeField] float missileSpeed = 2.5f;
+        [SerializeField] GameObject missilePrefab = null;
+        [SerializeField] Transform hardpoint = null;
 
-    private void Update() { MoveShip(); }
+        int objectToMoveTo = 0;
+        bool rotating;
+        bool missileFired;
+        Animator anm;
+        List<Transform> path = null;
 
-    private void MoveShip()
-    {
-        Vector3 positionWithHeight = path[objectToMoveTo].position;
-        positionWithHeight.y = transform.position.y;
-        transform.position = Vector3.MoveTowards(transform.position, positionWithHeight, speed * Time.deltaTime);
+        public List<Transform> SetPath { set => path = value; }
 
-        CheckRotationType(positionWithHeight);
+        private void Awake() { anm = GetComponent<Animator>(); }
 
-        if (objectToMoveTo + 1 < path.Count) { SetNextTile((transform.position - positionWithHeight).sqrMagnitude); }
-        else if (!missileFired) { Shoot(); }
-    }
+        private void Update() { if (path != null) { MoveShip(); } }
 
-    private void CheckRotationType(Vector3 positionWithHeight)
-    {
-        if (path[objectToMoveTo].CompareTag("Corner")) { RotateSmoothly(); }
-        else { transform.LookAt(positionWithHeight, Vector3.up); }
-    }
+        private void MoveShip()
+        {
+            Vector3 positionWithHeight = path[objectToMoveTo].position;
+            positionWithHeight.y = transform.position.y;
+            transform.position = Vector3.MoveTowards(transform.position, positionWithHeight, speed * Time.deltaTime);
 
-    private void RotateSmoothly()
-    {
-        Vector3 normalizedTilePosition = path[objectToMoveTo + 1].position - transform.position;
-        normalizedTilePosition.y = transform.position.y;
+            CheckRotationType(positionWithHeight);
 
-        Quaternion rot = Quaternion.LookRotation(normalizedTilePosition);
+            if (objectToMoveTo + 1 < path.Count) { SetNextTile((transform.position - positionWithHeight).sqrMagnitude); }
+            else if (!missileFired) { Shoot(); }
+        }
 
-        if (!rotating) { StartCoroutine(AnimateTurn(normalizedTilePosition)); }
+        private void CheckRotationType(Vector3 positionWithHeight)
+        {
+            if (path[objectToMoveTo].CompareTag("Corner")) { RotateSmoothly(); }
+            else { transform.LookAt(positionWithHeight, Vector3.up); }
+        }
 
-        transform.rotation = Quaternion.Lerp(transform.rotation, rot, Time.deltaTime * rotationSpeed);
-    }
+        private void RotateSmoothly()
+        {
+            Vector3 normalizedTilePosition = path[objectToMoveTo + 1].position - transform.position;
+            normalizedTilePosition.y = transform.position.y;
 
-    private IEnumerator AnimateTurn(Vector3 normalizedTilePosition)
-    {
-        rotating = true;
+            Quaternion rot = Quaternion.LookRotation(normalizedTilePosition);
 
-        if (Vector3.Dot(transform.right, normalizedTilePosition) < 0) { anm.SetTrigger("TurningLeft"); }
-        else { anm.SetTrigger("TurningRight"); }
+            if (!rotating) { StartCoroutine(AnimateTurn(normalizedTilePosition)); }
 
-        yield return new WaitForSeconds(1.1f);
+            transform.rotation = Quaternion.Lerp(transform.rotation, rot, Time.deltaTime * rotationSpeed);
+        }
 
-        rotating = false;
-    }
+        private IEnumerator AnimateTurn(Vector3 normalizedTilePosition)
+        {
+            rotating = true;
 
-    private void SetNextTile(float sqrDistance) { if (sqrDistance <= 0) { objectToMoveTo++; } }
+            if (Vector3.Dot(transform.right, normalizedTilePosition) < 0) { anm.SetTrigger("TurningLeft"); }
+            else { anm.SetTrigger("TurningRight"); }
 
-    private void Shoot()
-    {
-        missileFired = true;
+            yield return new WaitForSeconds(1.1f);
 
-        Rigidbody missile = Instantiate(missilePrefab, hardpoint.position, hardpoint.rotation).GetComponent<Rigidbody>();
-        missile.velocity = transform.forward * missileSpeed;
+            rotating = false;
+        }
 
-        anm.SetTrigger("Fire");
+        private void SetNextTile(float sqrDistance) { if (sqrDistance <= 0) { objectToMoveTo++; } }
+
+        private void Shoot()
+        {
+            missileFired = true;
+
+            Rigidbody missile = Instantiate(missilePrefab, hardpoint.position, hardpoint.rotation).GetComponent<Rigidbody>();
+            missile.velocity = transform.forward * missileSpeed;
+
+            anm.SetTrigger("Fire");
+        }
     }
 }
