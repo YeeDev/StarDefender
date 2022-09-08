@@ -69,8 +69,11 @@ public class Ship : MonoBehaviour
     private void Shoot()
     {
         missileFired = true;
+
         Rigidbody missile = Instantiate(missilePrefab, hardpoint.position, hardpoint.rotation).GetComponent<Rigidbody>();
         missile.velocity = transform.forward * missileSpeed;
+
+        anm.SetTrigger("Fire");
     }
 
     //TODO Grab it from another place, not here
