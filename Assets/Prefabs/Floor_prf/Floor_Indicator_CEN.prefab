@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7075235511377432715}
   - component: {fileID: 7075235511377432716}
   - component: {fileID: 7075235511377432717}
+  - component: {fileID: -6204149708987123856}
   m_Layer: 0
   m_Name: Floor_Indicator_CEN
   m_TagString: Untagged
@@ -83,6 +84,18 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &-6204149708987123856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7075235511377432718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95e8d1d8b4d7e4d61ac258af233e12b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7075235511924126778
 GameObject:
   m_ObjectHideFlags: 0
@@ -252,7 +265,7 @@ TextMesh:
   m_Anchor: 4
   m_Alignment: 1
   m_TabSize: 4
-  m_FontSize: 90
+  m_FontSize: 60
   m_FontStyle: 0
   m_RichText: 1
   m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}

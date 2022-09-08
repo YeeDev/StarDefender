@@ -187,6 +187,7 @@ GameObject:
   - component: {fileID: 8211939907430485854}
   - component: {fileID: 8211939907430485855}
   - component: {fileID: 8211939907430485840}
+  - component: {fileID: 633857588261425553}
   m_Layer: 0
   m_Name: Floor_Indicator_SH
   m_TagString: Untagged
@@ -259,3 +260,15 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &633857588261425553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8211939907430485841}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95e8d1d8b4d7e4d61ac258af233e12b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
