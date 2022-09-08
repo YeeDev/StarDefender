@@ -1,45 +1,45 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-[ExecuteInEditMode]
-public class Tile : MonoBehaviour
+namespace StarDef.Tiles
 {
-    [Tooltip("Unity's Grid Snap Settings")]
-    [SerializeField] int unityGridSize = 2;
-    [SerializeField] bool isPath = false;
-
-    bool alreadyExplored;
-    [SerializeField] Tile connectedTo = null;
-    TextMesh text;
-
-    public bool IsPath { get => isPath; }
-    public bool AlreadyExplored { get => alreadyExplored; set => alreadyExplored = value; }
-    public Tile TileConnectedTo { get => connectedTo; set => connectedTo = value; }
-    public Vector2Int GridCoordinates
+    [ExecuteInEditMode]
+    public class Tile : MonoBehaviour
     {
-        get
+        [Tooltip("Unity's Grid Snap Settings")]
+        [SerializeField] int unityGridSize = 2;
+        [SerializeField] bool isPath = false;
+
+        bool alreadyExplored;
+        [SerializeField] Tile connectedTo = null;
+        TextMesh text;
+
+        public bool IsPath { get => isPath; }
+        public bool AlreadyExplored { get => alreadyExplored; set => alreadyExplored = value; }
+        public Tile TileConnectedTo { get => connectedTo; set => connectedTo = value; }
+        public Vector2Int GridCoordinates
         {
-            Vector2Int coordinates = new Vector2Int();
-            coordinates.x = Mathf.RoundToInt(transform.position.x / unityGridSize);
-            coordinates.y = Mathf.RoundToInt(transform.position.z / unityGridSize);
+            get
+            {
+                Vector2Int coordinates = new Vector2Int();
+                coordinates.x = Mathf.RoundToInt(transform.position.x / unityGridSize);
+                coordinates.y = Mathf.RoundToInt(transform.position.z / unityGridSize);
 
-            return coordinates;
+                return coordinates;
+            }
         }
-    }
 
+        private void Awake()
+        {
+            text = GetComponentInChildren<TextMesh>();
+        }
 
-    private void Awake()
-    {
-        text = GetComponentInChildren<TextMesh>();
-    }
+        // Update is called once per frame
+        void Update()
+        {
+            Vector2Int coordinates = GridCoordinates;
 
-    // Update is called once per frame
-    void Update()
-    {
-        Vector2Int coordinates = GridCoordinates;
-
-        text.text = $"({coordinates.x},{coordinates.y})";
-        transform.name = coordinates.ToString();
+            text.text = $"({coordinates.x},{coordinates.y})";
+            transform.name = coordinates.ToString();
+        }
     }
 }
