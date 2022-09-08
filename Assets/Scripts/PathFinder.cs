@@ -7,13 +7,15 @@ public class PathFinder : MonoBehaviour
 {
     [Tooltip("Unity's Grid Snap Settings")]
     [SerializeField] int unityGridSize = 1;
-    [SerializeField] List<Tile> pathTiles;
     [SerializeField] Vector2Int startCoordinate, endCoordinate;
 
     Vector2Int[] directions = { Vector2Int.right, Vector2Int.up, Vector2Int.down, Vector2Int.left };
 
     Queue<Tile> tilesToExplore = new Queue<Tile>();
+    List<Transform> pathTiles = new List<Transform>();
     Dictionary<Vector2Int, Tile> grid = new Dictionary<Vector2Int, Tile>();
+
+    public List<Transform> GetPath { get => pathTiles; } 
 
     private void Awake()
     {
@@ -42,12 +44,19 @@ public class PathFinder : MonoBehaviour
 
             ExploreNeighbours(exploringTile);
 
-            if (exploringTile.GridCoordinates == endCoordinate) { tilesToExplore.Clear(); }
+            if (exploringTile.GridCoordinates == endCoordinate)
+            {
+                tilesToExplore.Clear();
+            }
         }
+
+        CreatePath();
     }
 
     private void ExploreNeighbours(Tile exploredTile)
     {
+        exploredTile.AlreadyExplored = true;
+
         foreach (Vector2Int direction in directions)
         {
             Vector2Int positionToSearch = exploredTile.GridCoordinates + direction;
@@ -58,11 +67,23 @@ public class PathFinder : MonoBehaviour
                 if (!neighbour.AlreadyExplored && neighbour.IsPath)
                 {
                     neighbour.AlreadyExplored = true;
-                    neighbour.GetComponent<MeshRenderer>().material.color = Color.blue;
+                    neighbour.TileConnectedTo = exploredTile;
 
                     tilesToExplore.Enqueue(neighbour);
                 }
             }
         }
+    }
+
+    private void CreatePath()
+    {
+        Tile tileAddedToPath = grid[endCoordinate];
+        while (tileAddedToPath != null)
+        {
+            pathTiles.Add(tileAddedToPath.transform);
+            tileAddedToPath = tileAddedToPath.TileConnectedTo;
+        }
+
+        pathTiles.Reverse();
     }
 }

@@ -10,10 +10,12 @@ public class Tile : MonoBehaviour
     [SerializeField] bool isPath = false;
 
     bool alreadyExplored;
+    [SerializeField] Tile connectedTo = null;
     TextMesh text;
 
     public bool IsPath { get => isPath; }
     public bool AlreadyExplored { get => alreadyExplored; set => alreadyExplored = value; }
+    public Tile TileConnectedTo { get => connectedTo; set => connectedTo = value; }
     public Vector2Int GridCoordinates
     {
         get
