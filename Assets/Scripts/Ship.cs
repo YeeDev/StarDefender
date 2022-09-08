@@ -12,39 +12,43 @@ public class Ship : MonoBehaviour
     [SerializeField] float missileSpeed = 2.5f;
     [SerializeField] GameObject missilePrefab = null;
     [SerializeField] Transform hardpoint = null;
-    [Header("Debug, remove later")]
-    [SerializeField] Transform[] pathArray = null;
 
     int objectToMoveTo = 0;
     bool rotating;
     bool missileFired;
     Animator anm;
+    List<Transform> path = null;
 
     private void Awake() { anm = GetComponent<Animator>(); }
+
+    private void Start()
+    {
+        path = FindObjectOfType<PathFinder>().GetPath;
+    }
 
     private void Update() { MoveShip(); }
 
     private void MoveShip()
     {
-        Vector3 positionWithHeight = pathArray[objectToMoveTo].position;
+        Vector3 positionWithHeight = path[objectToMoveTo].position;
         positionWithHeight.y = transform.position.y;
         transform.position = Vector3.MoveTowards(transform.position, positionWithHeight, speed * Time.deltaTime);
 
         CheckRotationType(positionWithHeight);
-        SetNextTilePosition(positionWithHeight); //TODO this shouldn't be here
 
-        if (objectToMoveTo + 1 == pathArray.Length && !missileFired) { Shoot(); }
+        if (objectToMoveTo + 1 < path.Count) { SetNextTile((transform.position - positionWithHeight).sqrMagnitude); }
+        else if (!missileFired) { Shoot(); }
     }
 
     private void CheckRotationType(Vector3 positionWithHeight)
     {
-        if (pathArray[objectToMoveTo].CompareTag("Corner")) { RotateSmoothly(); }
+        if (path[objectToMoveTo].CompareTag("Corner")) { RotateSmoothly(); }
         else { transform.LookAt(positionWithHeight, Vector3.up); }
     }
 
     private void RotateSmoothly()
     {
-        Vector3 normalizedTilePosition = pathArray[objectToMoveTo + 1].position - transform.position;
+        Vector3 normalizedTilePosition = path[objectToMoveTo + 1].position - transform.position;
         normalizedTilePosition.y = transform.position.y;
 
         Quaternion rot = Quaternion.LookRotation(normalizedTilePosition);
@@ -66,6 +70,8 @@ public class Ship : MonoBehaviour
         rotating = false;
     }
 
+    private void SetNextTile(float sqrDistance) { if (sqrDistance <= 0) { objectToMoveTo++; } }
+
     private void Shoot()
     {
         missileFired = true;
@@ -74,16 +80,5 @@ public class Ship : MonoBehaviour
         missile.velocity = transform.forward * missileSpeed;
 
         anm.SetTrigger("Fire");
-    }
-
-    //TODO Grab it from another place, not here
-    private void SetNextTilePosition(Vector3 positionWithHeight)
-    {
-        if ((transform.position - positionWithHeight).sqrMagnitude <= 0)
-        {
-            if (objectToMoveTo + 1 >= pathArray.Length) { return; }
-
-            objectToMoveTo++;
-        }
     }
 }
