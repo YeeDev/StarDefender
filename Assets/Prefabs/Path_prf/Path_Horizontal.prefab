@@ -192,3 +192,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unityGridSize: 2
   isPath: 1
+  connectedTo: {fileID: 0}

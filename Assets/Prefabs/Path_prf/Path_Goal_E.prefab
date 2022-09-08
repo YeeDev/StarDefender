@@ -97,6 +97,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unityGridSize: 2
   isPath: 1
+  connectedTo: {fileID: 0}
 --- !u!1 &8657944181349838390
 GameObject:
   m_ObjectHideFlags: 0
