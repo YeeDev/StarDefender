@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5048573516413125852}
   - component: {fileID: 665963008724785647}
   m_Layer: 0
-  m_Name: Floor_Indicator_CES
+  m_Name: Floor_Indicator_CSW
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
