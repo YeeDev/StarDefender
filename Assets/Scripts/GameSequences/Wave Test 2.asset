@@ -15,6 +15,6 @@ MonoBehaviour:
   numberOfEnemies: 1
   timeBetweenEnemies: 1
   enemyType: {fileID: 1016377805862053576, guid: eb7919a5b2fd649209036d08d143c325, type: 3}
-  spawnPoint: {x: 0, y: 0, z: 2}
+  spawnPoint: {x: 0, y: 2}
   startPoint: {x: 0, y: 1}
   endPoint: {x: 3, y: -3}
