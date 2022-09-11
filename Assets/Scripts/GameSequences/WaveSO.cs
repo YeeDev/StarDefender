@@ -29,11 +29,12 @@ namespace StarDef.GameSequences
             }
         }
 
-        private Vector3Int CalculateSpawnPoint()
+        private Vector3 CalculateSpawnPoint()
         {
-            Vector3Int spawnVector3 = Vector3Int.zero;
+            Vector3 spawnVector3 = Vector3.zero;
 
             spawnVector3.x = spawnPoint.x;
+            spawnVector3.y = enemyType.transform.position.y;
             spawnVector3.z = spawnPoint.y;
 
             return spawnVector3;
