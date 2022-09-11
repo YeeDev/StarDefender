@@ -10,7 +10,7 @@ namespace StarDef.Tiles
         [SerializeField] bool isPath = false;
 
         bool alreadyExplored;
-        [SerializeField] Tile connectedTo = null;
+        Tile connectedTo = null;
         TextMesh text;
 
         public bool IsPath { get => isPath; }
