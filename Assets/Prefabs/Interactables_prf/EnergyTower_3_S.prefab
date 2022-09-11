@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7291325924692977930}
   - component: {fileID: 7291325924692977931}
   - component: {fileID: 7291325924692977924}
+  - component: {fileID: 2687976297454493973}
   m_Layer: 0
   m_Name: EnergyTower_3_S
   m_TagString: Untagged
@@ -98,6 +99,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unityGridSize: 2
   isPath: 0
+--- !u!114 &2687976297454493973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7291325924692977928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0aaf3bc91c02f44fe82d756224f8bf40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  indicator: {fileID: 7291325926239458588}
+  damagedColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!1 &7291325925547616890
 GameObject:
   m_ObjectHideFlags: 0
