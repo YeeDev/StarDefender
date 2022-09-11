@@ -12,6 +12,7 @@ namespace StarDef.GameSequences
         [SerializeField] int numberOfEnemies = 5;
         [SerializeField] float timeBetweenEnemies = 1f;
         [SerializeField] GameObject enemyType = null;
+        [SerializeField] Vector2Int spawnPoint = Vector2Int.zero;
         [SerializeField] Vector2Int startPoint, endPoint;
 
         public IEnumerator PlayWave()
@@ -23,9 +24,19 @@ namespace StarDef.GameSequences
             while (totalEnemiesSpawned < numberOfEnemies)
             {
                 totalEnemiesSpawned++;
-                Instantiate(enemyType).GetComponent<Ship>().SetPath = path;
+                Instantiate(enemyType, CalculateSpawnPoint(), Quaternion.identity).GetComponent<Ship>().SetPath = path;
                 yield return new WaitForSeconds(timeBetweenEnemies);
             }
+        }
+
+        private Vector3Int CalculateSpawnPoint()
+        {
+            Vector3Int spawnVector3 = Vector3Int.zero;
+
+            spawnVector3.x = spawnPoint.x;
+            spawnVector3.z = spawnPoint.y;
+
+            return spawnVector3;
         }
     }
 }
