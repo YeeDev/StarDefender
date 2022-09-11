@@ -8,6 +8,10 @@ namespace StarDef.GameSequences
     {
         [SerializeField] WaveSO[] waves;
 
+        HealthStat health;
+
+        private void Awake() { health = FindObjectOfType<HealthStat>(); }
+
         private void Start()
         {
             StartCoroutine(RunWaves());
@@ -17,6 +21,7 @@ namespace StarDef.GameSequences
         {
             foreach (WaveSO wave in waves)
             {
+                if(health.NoHealth) { yield break; }
                 yield return wave.PlayWave();
             }
         }
