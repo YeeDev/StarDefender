@@ -11,6 +11,14 @@ public class HealthStat : MonoBehaviour
 
     private void Awake()
     {
+        EnergyGenerator[] generatorsFound = FindObjectsOfType<EnergyGenerator>();
+
+        if (generatorsFound.Length <= 0)
+        {
+            Debug.LogError("Generators not found!");
+            return;
+        }
+
         foreach (var generator in FindObjectsOfType<EnergyGenerator>())
         {
             generators.Enqueue(generator);
