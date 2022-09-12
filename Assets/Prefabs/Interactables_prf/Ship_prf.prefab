@@ -86,6 +86,7 @@ MonoBehaviour:
   missileSpeed: 2.5
   missilePrefab: {fileID: 2967642113568274915, guid: 24dd72b24a84a49ef9ea38e98cbe53dd, type: 3}
   hardpoint: {fileID: 1800162296892723478}
+  explosionParticles: {fileID: 2175212675022720099, guid: 433cd280c4d2140619aed73fedd148d5, type: 3}
 --- !u!54 &126657265932840115
 Rigidbody:
   m_ObjectHideFlags: 0
