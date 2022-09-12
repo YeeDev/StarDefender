@@ -7,7 +7,7 @@ namespace StarDef.Tiles
     {
         [Tooltip("Unity's Grid Snap Settings")]
         [SerializeField] int unityGridSize = 2;
-        [SerializeField] bool isPath = false;
+        [SerializeField] bool isPath, isEnergy = false;
 
         bool alreadyExplored;
         Tile connectedTo = null;
