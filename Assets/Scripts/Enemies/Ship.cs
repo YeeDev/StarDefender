@@ -8,6 +8,7 @@ namespace StarDef.Enemies
     public class Ship : MonoBehaviour
     {
         [SerializeField] float speed = 2f;
+        [SerializeField] int health = 5;
         [SerializeField] float rotationSpeed = 3f;
         [SerializeField] float missileSpeed = 2.5f;
         [SerializeField] GameObject missilePrefab = null;
@@ -21,9 +22,22 @@ namespace StarDef.Enemies
 
         public List<Transform> SetPath { set => path = value; }
 
-        private void Awake() { anm = GetComponent<Animator>(); }
+        private void Awake()
+        {
+            anm = GetComponent<Animator>();
+            health *= 2; //Prevents prewarm bug.
+        }
 
         private void Update() { if (path != null) { MoveShip(); } }
+
+        private void OnParticleCollision(GameObject other)
+        {
+            health--;
+            if (health <= 0)
+            {
+                Destroy(gameObject);//TODO Pooler if needed
+            }
+        }
 
         private void MoveShip()
         {
