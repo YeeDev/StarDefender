@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Wave Test 2
   m_EditorClassIdentifier: 
   numberOfEnemies: 1
-  timeBetweenEnemies: 1
+  timeBetweenEnemies: 2
   enemyType: {fileID: 1016377805862053576, guid: eb7919a5b2fd649209036d08d143c325, type: 3}
-  spawnPoint: {x: 0, y: 2}
+  spawnPoint: {x: 0, y: 4}
   startPoint: {x: 0, y: 1}
   endPoint: {x: 3, y: -3}
