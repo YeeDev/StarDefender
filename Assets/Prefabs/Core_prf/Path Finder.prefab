@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2944227270241932516}
   - component: {fileID: 2944227270241932519}
+  - component: {fileID: 1462525251159900239}
   m_Layer: 0
   m_Name: Path Finder
   m_TagString: Untagged
@@ -41,5 +42,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 635472bddef1847dbaf9a1e0c61a3c65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1462525251159900239
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2944227270241932518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98b788de6d5134d81987ae280187d4a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
