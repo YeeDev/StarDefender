@@ -5324,7 +5324,7 @@ TextMesh:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6619315056658064547}
-  m_Text: (1,0)
+  m_Text: (0,0)
   m_OffsetZ: 0
   m_CharacterSize: 1
   m_LineSpacing: 1
@@ -5492,6 +5492,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unityGridSize: 2
   isPath: 0
+  isEnergy: 1
+  isGenerator: 0
+  energyIndicator: {fileID: 5662784659610493121}
 --- !u!114 &7521157719015388140
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5509,6 +5512,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   towerHead: {fileID: 7511932693144393930}
+  enabledColor: {r: 0, g: 1, b: 0.034408808, a: 1}
+  disabledColor: {r: 1, g: 1, b: 1, a: 0}
 --- !u!65 &3277226837409046416
 BoxCollider:
   m_ObjectHideFlags: 0
