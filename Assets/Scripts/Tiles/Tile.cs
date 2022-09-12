@@ -7,15 +7,19 @@ namespace StarDef.Tiles
     {
         [Tooltip("Unity's Grid Snap Settings")]
         [SerializeField] int unityGridSize = 2;
-        [SerializeField] bool isPath, isEnergy = false;
+        [SerializeField] bool isPath, isEnergy, isGenerator = false;
+        [SerializeField] MeshRenderer energyIndicator = null;
 
         bool alreadyExplored;
         Tile connectedTo = null;
         TextMesh text;
 
         public bool IsPath { get => isPath; }
+        public bool IsEnergy { get => isEnergy; }
+        public bool IsGenerator { get => isGenerator; }
         public bool AlreadyExplored { get => alreadyExplored; set => alreadyExplored = value; }
         public Tile TileConnectedTo { get => connectedTo; set => connectedTo = value; }
+        public MeshRenderer Indicator { get => energyIndicator; }
         public Vector2Int GridCoordinates
         {
             get

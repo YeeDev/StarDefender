@@ -11,6 +11,8 @@ namespace StarDef.Paths
         Queue<Tile> tilesToExplore = new Queue<Tile>();
         Dictionary<Vector2Int, Tile> grid = new Dictionary<Vector2Int, Tile>();
 
+        public Dictionary<Vector2Int, Tile> GetGrid { get => grid; } 
+
         private void Awake() { LoadTiles(); }
 
         private void LoadTiles()
