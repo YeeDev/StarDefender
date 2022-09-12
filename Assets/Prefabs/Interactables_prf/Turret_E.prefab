@@ -13,7 +13,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1489875470808684539, guid: c80f772c45f674056beb7fd232fef364, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1489875470808684539, guid: c80f772c45f674056beb7fd232fef364, type: 3}
       propertyPath: m_LocalPosition.y
@@ -51,13 +51,45 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2850788505843071057, guid: c80f772c45f674056beb7fd232fef364, type: 3}
+      propertyPath: CollisionModule.radiusScale
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2850788505843071057, guid: c80f772c45f674056beb7fd232fef364, type: 3}
+      propertyPath: InitialModule.startSpeed.scalar
+      value: 1200
+      objectReference: {fileID: 0}
+    - target: {fileID: 2850788505843071057, guid: c80f772c45f674056beb7fd232fef364, type: 3}
+      propertyPath: CollisionModule.collidesWith.m_Bits
+      value: 63
+      objectReference: {fileID: 0}
+    - target: {fileID: 2850788505843071057, guid: c80f772c45f674056beb7fd232fef364, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 0.019607844
+      objectReference: {fileID: 0}
+    - target: {fileID: 6015071809130775414, guid: c80f772c45f674056beb7fd232fef364, type: 3}
+      propertyPath: CollisionModule.radiusScale
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6015071809130775414, guid: c80f772c45f674056beb7fd232fef364, type: 3}
+      propertyPath: InitialModule.startSpeed.scalar
+      value: 1200
+      objectReference: {fileID: 0}
+    - target: {fileID: 6015071809130775414, guid: c80f772c45f674056beb7fd232fef364, type: 3}
+      propertyPath: CollisionModule.collidesWith.m_Bits
+      value: 63
+      objectReference: {fileID: 0}
     - target: {fileID: 6885860115062656725, guid: c80f772c45f674056beb7fd232fef364, type: 3}
       propertyPath: m_Name
-      value: (0, 0)
+      value: (1, 0)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6885860115062656725, guid: c80f772c45f674056beb7fd232fef364, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8000209698570861657, guid: c80f772c45f674056beb7fd232fef364, type: 3}
       propertyPath: m_Text
-      value: (0,0)
+      value: (1,0)
       objectReference: {fileID: 0}
     - target: {fileID: 9065527204565328904, guid: c80f772c45f674056beb7fd232fef364, type: 3}
       propertyPath: m_LocalRotation.w
