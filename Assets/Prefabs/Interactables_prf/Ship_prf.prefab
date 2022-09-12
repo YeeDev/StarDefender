@@ -10,8 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1016377805862053578}
   - component: {fileID: 2754425565408217076}
+  - component: {fileID: 8036898194575889935}
   - component: {fileID: 1016377805862053579}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Ship_prf
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53,6 +54,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!65 &8036898194575889935
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1016377805862053576}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.87, y: 0.3, z: 0.86}
+  m_Center: {x: 0, y: 0.14000002, z: 0.06999999}
 --- !u!114 &1016377805862053579
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -70,29 +84,6 @@ MonoBehaviour:
   missileSpeed: 2.5
   missilePrefab: {fileID: 2967642113568274915, guid: 24dd72b24a84a49ef9ea38e98cbe53dd, type: 3}
   hardpoint: {fileID: 1800162296892723478}
-  pathArray:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!1 &1016377806060194242
 GameObject:
   m_ObjectHideFlags: 0
