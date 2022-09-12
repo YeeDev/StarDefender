@@ -100,6 +100,8 @@ MonoBehaviour:
   unityGridSize: 2
   isPath: 0
   isEnergy: 1
+  isGenerator: 1
+  energyIndicator: {fileID: 5185471259302667571}
 --- !u!114 &465074043867417838
 MonoBehaviour:
   m_ObjectHideFlags: 0

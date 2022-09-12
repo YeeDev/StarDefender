@@ -15,6 +15,10 @@ PrefabInstance:
       propertyPath: isEnergy
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3723164672641576824, guid: 566cfce65e44e4e7b82dab963dbc6158, type: 3}
+      propertyPath: isGenerator
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3723164672641576825, guid: 566cfce65e44e4e7b82dab963dbc6158, type: 3}
       propertyPath: m_RootOrder
       value: 0
