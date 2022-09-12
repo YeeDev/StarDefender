@@ -99,6 +99,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unityGridSize: 2
   isPath: 0
+  isEnergy: 1
 --- !u!114 &465074043867417838
 MonoBehaviour:
   m_ObjectHideFlags: 0

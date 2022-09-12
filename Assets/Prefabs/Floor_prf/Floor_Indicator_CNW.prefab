@@ -98,6 +98,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unityGridSize: 2
   isPath: 0
+  isEnergy: 1
 --- !u!1 &7075235511924126778
 GameObject:
   m_ObjectHideFlags: 0

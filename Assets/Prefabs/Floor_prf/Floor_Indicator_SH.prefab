@@ -274,3 +274,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unityGridSize: 2
   isPath: 0
+  isEnergy: 1
