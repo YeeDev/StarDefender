@@ -180,6 +180,8 @@ MonoBehaviour:
   unityGridSize: 2
   isPath: 0
   isEnergy: 1
+  isGenerator: 0
+  energyIndicator: {fileID: 5800606106541700952}
 --- !u!1 &6522916238377148070
 GameObject:
   m_ObjectHideFlags: 0
@@ -261,7 +263,7 @@ TextMesh:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6522916238377148070}
-  m_Text: (-2,-1)
+  m_Text: (0,0)
   m_OffsetZ: 0
   m_CharacterSize: 1
   m_LineSpacing: 1
