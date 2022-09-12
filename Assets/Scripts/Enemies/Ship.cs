@@ -13,6 +13,7 @@ namespace StarDef.Enemies
         [SerializeField] float missileSpeed = 2.5f;
         [SerializeField] GameObject missilePrefab = null;
         [SerializeField] Transform hardpoint = null;
+        [SerializeField] GameObject explosionParticles = null;
 
         int objectToMoveTo = 0;
         bool rotating;
@@ -30,14 +31,7 @@ namespace StarDef.Enemies
 
         private void Update() { if (path != null) { MoveShip(); } }
 
-        private void OnParticleCollision(GameObject other)
-        {
-            health--;
-            if (health <= 0)
-            {
-                Destroy(gameObject);//TODO Pooler if needed
-            }
-        }
+        private void OnParticleCollision(GameObject other) { TakeDamage(); }
 
         private void MoveShip()
         {
@@ -91,6 +85,16 @@ namespace StarDef.Enemies
             missile.velocity = transform.forward * missileSpeed;
 
             anm.SetTrigger("Fire");
+        }
+
+        private void TakeDamage()
+        {
+            health--;
+            if (health <= 0)
+            {
+                Instantiate(explosionParticles, transform.position, Quaternion.identity);
+                Destroy(gameObject);//TODO Pooler if needed
+            }
         }
     }
 }
