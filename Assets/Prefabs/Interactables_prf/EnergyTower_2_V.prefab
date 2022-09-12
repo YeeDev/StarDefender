@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5185471258137532711, guid: f5aece19d2e774972a4cceb2f4fadb10, type: 3}
       propertyPath: m_Name
-      value: (0, 0)
+      value: EnergyTower_2_V
       objectReference: {fileID: 0}
     - target: {fileID: 5185471258137532714, guid: f5aece19d2e774972a4cceb2f4fadb10, type: 3}
       propertyPath: m_RootOrder

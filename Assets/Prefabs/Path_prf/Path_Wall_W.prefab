@@ -53,7 +53,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6662859905191769956, guid: 0881b1c0d878e4c75825014321c9d9c1, type: 3}
       propertyPath: m_Name
-      value: (0, 0)
+      value: Path_Wall_W
       objectReference: {fileID: 0}
     - target: {fileID: 6662859905335639900, guid: 0881b1c0d878e4c75825014321c9d9c1, type: 3}
       propertyPath: m_LocalRotation.w

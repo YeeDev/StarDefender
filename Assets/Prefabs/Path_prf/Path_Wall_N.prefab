@@ -29,7 +29,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 591604884057106704, guid: 94fecbb62dffa4ac68f2b723c085280e, type: 3}
       propertyPath: m_Name
-      value: (0, 0)
+      value: Path_Wall_N
       objectReference: {fileID: 0}
     - target: {fileID: 591604884057106709, guid: 94fecbb62dffa4ac68f2b723c085280e, type: 3}
       propertyPath: m_RootOrder

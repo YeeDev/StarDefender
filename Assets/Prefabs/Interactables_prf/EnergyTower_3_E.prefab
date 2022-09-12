@@ -53,7 +53,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2394541820130346428, guid: dbc64bf983495484187d08503adeb553, type: 3}
       propertyPath: m_Name
-      value: (0, 0)
+      value: EnergyTower_3_E
       objectReference: {fileID: 0}
     - target: {fileID: 2394541820380481217, guid: dbc64bf983495484187d08503adeb553, type: 3}
       propertyPath: m_LocalRotation.w
