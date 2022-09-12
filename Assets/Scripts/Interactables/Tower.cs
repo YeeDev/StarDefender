@@ -16,12 +16,14 @@ namespace StarDef.Interactables
         EnergyFinder energyFinder;
         EnergyGenerator generator;
         List<MeshRenderer> indicators;
+        AudioSource audioSource;
 
         Transform mainTarget;
 
         private void Awake()
         {
             animator = GetComponent<Animator>();
+            audioSource = GetComponent<AudioSource>();
             energyFinder = FindObjectOfType<EnergyFinder>();
         }
 
@@ -41,6 +43,8 @@ namespace StarDef.Interactables
 
             ChangeIndicatorsColor();
         }
+
+        public void PlayLaserSound() { audioSource.Play(); }
 
         private void ChangeIndicatorsColor()
         {
