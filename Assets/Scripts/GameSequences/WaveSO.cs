@@ -7,13 +7,16 @@ using StarDef.Enemies;
 namespace StarDef.GameSequences
 {
     [CreateAssetMenu(fileName = "New Wave", menuName = "Wave")]
-    public class WaveSO : ScriptableObject
+    public class WaveSO : ScriptableObject, ISequence
     {
         [SerializeField] int numberOfEnemies = 5;
         [SerializeField] float timeBetweenEnemies = 1f;
         [SerializeField] GameObject enemyType = null;
         [SerializeField] Vector2Int spawnPoint = Vector2Int.zero;
         [SerializeField] Vector2Int startPoint, endPoint;
+        [SerializeField] ScriptableObject decoratorSequence = null; 
+
+        public IEnumerator PlaySequence() { yield return PlayWave(); }
 
         public IEnumerator PlayWave()
         {
@@ -26,6 +29,12 @@ namespace StarDef.GameSequences
                 totalEnemiesSpawned++;
                 Instantiate(enemyType, CalculateSpawnPoint(), Quaternion.identity).GetComponent<Ship>().SetPath = path;
                 yield return new WaitForSeconds(timeBetweenEnemies);
+
+                if (decoratorSequence != null)
+                {
+                    ISequence decorator = (ISequence)decoratorSequence;
+                    yield return decorator.PlaySequence();
+                }
             }
         }
 
