@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using StarDef.Paths;
 using StarDef.Enemies;
+using StarDef.Info;
 
 namespace StarDef.GameSequences
 {
@@ -16,9 +17,9 @@ namespace StarDef.GameSequences
         [SerializeField] Vector2Int startPoint, endPoint;
         [SerializeField] ScriptableObject decoratorSequence = null; 
 
-        public IEnumerator PlaySequence() { yield return PlayWave(); }
+        public IEnumerator PlaySequence(SequenceVariableHolder infoHolder) { yield return PlayWave(infoHolder); }
 
-        public IEnumerator PlayWave()
+        public IEnumerator PlayWave(SequenceVariableHolder infoHolder)
         {
             int totalEnemiesSpawned = 0;
             PathFinder pathFinder = FindObjectOfType<PathFinder>();
@@ -33,7 +34,7 @@ namespace StarDef.GameSequences
                 if (decoratorSequence != null)
                 {
                     ISequence decorator = (ISequence)decoratorSequence;
-                    yield return decorator.PlaySequence();
+                    yield return decorator.PlaySequence(infoHolder);
                 }
             }
         }
