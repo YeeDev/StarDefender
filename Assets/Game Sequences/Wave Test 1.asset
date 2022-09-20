@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd6a292e503ff48cf981fac964cd747f, type: 3}
   m_Name: Wave Test 1
   m_EditorClassIdentifier: 
-  numberOfEnemies: 1
+  numberOfEnemies: 3
   timeBetweenEnemies: 2
   enemyType: {fileID: 1016377805862053576, guid: eb7919a5b2fd649209036d08d143c325, type: 3}
   spawnPoint: {x: 0, y: 4}
   startPoint: {x: 0, y: 1}
   endPoint: {x: -3, y: -3}
+  decoratorSequence: {fileID: 11400000, guid: cc9318977cce944f98ca184d826e36e7, type: 2}

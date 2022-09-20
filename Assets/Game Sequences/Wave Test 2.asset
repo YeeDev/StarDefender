@@ -18,3 +18,4 @@ MonoBehaviour:
   spawnPoint: {x: 0, y: 4}
   startPoint: {x: 0, y: 1}
   endPoint: {x: 3, y: -3}
+  decoratorSequence: {fileID: 0}
