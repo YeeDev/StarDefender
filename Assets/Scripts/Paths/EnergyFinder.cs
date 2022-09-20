@@ -43,7 +43,6 @@ namespace StarDef.Paths
                 if (exploringTile.IsGenerator)
                 {
                     endCoordinate = exploringTile.GridCoordinates;
-                    Debug.Log("running") ;
                     tilesToExplore.Clear();
                 }
             }
