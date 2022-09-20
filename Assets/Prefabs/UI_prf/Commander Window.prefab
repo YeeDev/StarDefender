@@ -78,8 +78,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: This is place holder text to see if this fits and how much text I can put
-    in here, it looks ok so far sdsdasdadsadsadad dsadaadadadasdadsadsada
+  m_Text: rrrrrbhhhRRRRRR
 --- !u!1 &5498995597950552690
 GameObject:
   m_ObjectHideFlags: 0
@@ -167,6 +166,7 @@ GameObject:
   - component: {fileID: 5498995598467517632}
   - component: {fileID: 5498995598467517634}
   - component: {fileID: 5498995598467517635}
+  - component: {fileID: 4081150490865564079}
   m_Layer: 5
   m_Name: Commander Window
   m_TagString: Untagged
@@ -183,7 +183,7 @@ RectTransform:
   m_GameObject: {fileID: 5498995598467517633}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 0, z: 1}
   m_Children:
   - {fileID: 5498995599336819177}
   - {fileID: 5498995597950552701}
@@ -233,6 +233,25 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!95 &4081150490865564079
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5498995598467517633}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 911c88bd68c9343b0a15dca1b5fbfd80, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &5498995599336819182
 GameObject:
   m_ObjectHideFlags: 0
@@ -260,7 +279,7 @@ RectTransform:
   m_GameObject: {fileID: 5498995599336819182}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 0, z: 1}
   m_Children: []
   m_Father: {fileID: 5498995598467517632}
   m_RootOrder: 0
