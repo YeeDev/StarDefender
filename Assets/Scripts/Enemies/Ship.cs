@@ -67,8 +67,8 @@ namespace StarDef.Enemies
         {
             rotating = true;
 
-            if (Vector3.Dot(transform.right, normalizedTilePosition) < 0) { anm.SetTrigger("TurningLeft"); }
-            else { anm.SetTrigger("TurningRight"); }
+            string animationToPlay = Vector3.Dot(transform.right, normalizedTilePosition) < 0 ? "TurningLeft" : "TurningRight";
+            anm.SetTrigger(animationToPlay);
 
             yield return new WaitForSeconds(1.1f);
 
