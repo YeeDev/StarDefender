@@ -6,11 +6,14 @@ namespace StarDef.GameSequences
 {
     public class Sequencer : MonoBehaviour
     {
-        [SerializeField] WaveSO[] waves;
+        [SerializeField] ScriptableObject[] gameSequence = null;
 
         HealthStat health;
 
-        private void Awake() { health = FindObjectOfType<HealthStat>(); }
+        private void Awake()
+        {
+            health = FindObjectOfType<HealthStat>();
+        }
 
         private void Start()
         {
@@ -19,10 +22,10 @@ namespace StarDef.GameSequences
 
         private IEnumerator RunWaves()
         {
-            foreach (WaveSO wave in waves)
+            foreach (ISequence sequence in gameSequence)
             {
                 if(health.NoHealth) { yield break; }
-                yield return wave.PlayWave();
+                yield return sequence.PlaySequence();
             }
         }
     }
