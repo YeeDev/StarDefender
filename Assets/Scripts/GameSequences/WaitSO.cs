@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using StarDef.Info;
 
 namespace StarDef.GameSequences
 {
@@ -8,6 +9,6 @@ namespace StarDef.GameSequences
     {
         [SerializeField][Range(0, 10)] float timeToWait = 0f;
 
-        public IEnumerator PlaySequence() { yield return new WaitForSeconds(timeToWait); }
+        public IEnumerator PlaySequence(SequenceVariableHolder infoHolder) { yield return new WaitForSeconds(timeToWait); }
     }
 }
