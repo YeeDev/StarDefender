@@ -1,8 +1,6 @@
 using System.Collections;
-using System.Collections.Generic;
 using StarDef.Info;
 using UnityEngine;
-using Yee.Dialogue;
 
 namespace StarDef.GameSequences
 {
@@ -10,7 +8,6 @@ namespace StarDef.GameSequences
     public class DialogueSO : ScriptableObject, ISequence
     {
         [SerializeField] [TextArea(2, 5)] string dialogue = null;
-        [SerializeField] float waitBeforePrint = 1f;
         [SerializeField] ScriptableObject beforePrintDecorator = null;
         [SerializeField] ScriptableObject afterPrintDecorator = null;
 

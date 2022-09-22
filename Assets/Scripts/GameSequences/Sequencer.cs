@@ -1,8 +1,6 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using StarDef.Info;
-using UnityEngine.UI;
 
 namespace StarDef.GameSequences
 {

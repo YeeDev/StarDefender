@@ -37,7 +37,6 @@ namespace StarDef.Tiles
             text = GetComponentInChildren<TextMesh>();
         }
 
-        // Update is called once per frame
         void Update()
         {
             Vector2Int coordinates = GridCoordinates;
