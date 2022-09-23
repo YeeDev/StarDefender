@@ -3,6 +3,7 @@ using UnityEngine;
 using StarDef.Paths;
 using StarDef.Tiles;
 using StarDef.Tutorials;
+using StarDef.Core;
 
 namespace StarDef.Interactables
 {
@@ -13,11 +14,13 @@ namespace StarDef.Interactables
         [SerializeField] Transform towerHead = null;
         [SerializeField] Color enabledColor, disabledColor;
 
+        bool gameHasStarted;
         Animator animator;
         EnergyFinder energyFinder;
         EnergyGenerator generator;
         AudioSource audioSource;
         TutorialObject tutorialTag;
+        GameStarter gameStarter;
         List<MeshRenderer> indicators;
 
         Transform mainTarget;
@@ -28,6 +31,7 @@ namespace StarDef.Interactables
             audioSource = GetComponent<AudioSource>();
             tutorialTag = GetComponent<TutorialObject>();
 
+            gameStarter = FindObjectOfType<GameStarter>();
             energyFinder = FindObjectOfType<EnergyFinder>();
         }
 
@@ -38,8 +42,15 @@ namespace StarDef.Interactables
             generator.AddPath(indicators);
         }
 
+        private void OnEnable() { gameStarter.OnGameStart += EnableControl; }
+        private void OnDisable() { gameStarter.OnGameStart -= EnableControl; }
+
+        private void EnableControl() { gameHasStarted = true; }
+
         private void OnMouseDown()
         {
+            if (!gameHasStarted) { return; }
+
             if (!generator.IsOn || !generator.CanBeUsed(transform)) { return; }
 
             animator.SetBool("IsOpen", !animator.GetBool("IsOpen"));

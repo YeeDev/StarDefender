@@ -1,4 +1,5 @@
 using UnityEngine;
+using StarDef.Core;
 
 namespace StarDef.Interactables
 {
