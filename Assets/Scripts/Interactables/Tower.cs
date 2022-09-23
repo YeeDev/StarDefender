@@ -45,7 +45,7 @@ namespace StarDef.Interactables
             animator.SetBool("IsOpen", !animator.GetBool("IsOpen"));
             generator.UsedBy = animator.GetBool("IsOpen") ? transform : null;
 
-            if (tutorialTag != null) { }
+            if (tutorialTag != null && tutorialTag.InTutorial) { tutorialTag.InteractWithObject(); }
 
             ChangeIndicatorsColor();
         }
