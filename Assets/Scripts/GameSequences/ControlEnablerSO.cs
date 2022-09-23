@@ -11,7 +11,7 @@ namespace StarDef.GameSequences
 
         public IEnumerator PlaySequence(SequenceVariableHolder infoHolder)
         {
-            infoHolder.GameStarter.OnControlChange(enableControl);
+            infoHolder.ControlEnabler.OnControlChange(enableControl);
             yield return new WaitForEndOfFrame();
         }
     }
