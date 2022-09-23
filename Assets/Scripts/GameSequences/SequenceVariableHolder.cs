@@ -4,6 +4,7 @@ using UnityEngine.UI;
 using Yee.Dialogue;
 using StarDef.Tutorials;
 using StarDef.Core;
+using StarDef.Paths;
 
 namespace StarDef.Info
 {
@@ -11,11 +12,14 @@ namespace StarDef.Info
     {
         Text commanderText;
         Animator commanderAnimator;
+        PathFinder pathFinder;
         ControlEnabler controlEnabler;
+        
         DialoguePrinter printer;
 
         public Text CommanderText { get => commanderText; }
         public Animator CommanderAnimator { get => commanderAnimator; }
+        public PathFinder GetPathFinder { get => pathFinder; }
         public ControlEnabler ControlEnabler { get => controlEnabler; }
         public DialoguePrinter Printer { get => printer; }
         public TutorialMask GetAnimatedMask { get => tutorialMasks[MaskTag.Tutorial_Mask]; }
@@ -32,6 +36,7 @@ namespace StarDef.Info
             commanderText = commanderWindow.GetComponentInChildren<Text>();
 
             controlEnabler = GameObject.FindObjectOfType<ControlEnabler>();
+            pathFinder = GameObject.FindObjectOfType<PathFinder>();
 
             PopulateDictionaries();
         }
