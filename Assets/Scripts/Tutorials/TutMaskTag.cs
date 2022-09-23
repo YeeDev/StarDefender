@@ -4,7 +4,7 @@ namespace StarDef.Tutorials
 {
     public class TutMaskTag : MonoBehaviour
     {
-        [SerializeField] MaskTag tutorialTag = MaskTag.Tutorial_0;
+        [SerializeField] MaskTag tutorialTag = MaskTag.NONE;
         Animator animator;
 
         public MaskTag GetTag { get => tutorialTag; }

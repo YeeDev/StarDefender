@@ -3,7 +3,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using Yee.Dialogue;
 using StarDef.Tutorials;
-using System;
 
 namespace StarDef.Info
 {
