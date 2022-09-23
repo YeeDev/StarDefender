@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using StarDef.Paths;
 using StarDef.Tiles;
+using StarDef.Tutorials;
 
 namespace StarDef.Interactables
 {
@@ -15,8 +16,9 @@ namespace StarDef.Interactables
         Animator animator;
         EnergyFinder energyFinder;
         EnergyGenerator generator;
-        List<MeshRenderer> indicators;
         AudioSource audioSource;
+        TutObjectTag tutorialTag;
+        List<MeshRenderer> indicators;
 
         Transform mainTarget;
 
@@ -24,6 +26,8 @@ namespace StarDef.Interactables
         {
             animator = GetComponent<Animator>();
             audioSource = GetComponent<AudioSource>();
+            tutorialTag = GetComponent<TutObjectTag>();
+
             energyFinder = FindObjectOfType<EnergyFinder>();
         }
 
@@ -40,6 +44,8 @@ namespace StarDef.Interactables
 
             animator.SetBool("IsOpen", !animator.GetBool("IsOpen"));
             generator.UsedBy = animator.GetBool("IsOpen") ? transform : null;
+
+            if (tutorialTag != null) { }
 
             ChangeIndicatorsColor();
         }
