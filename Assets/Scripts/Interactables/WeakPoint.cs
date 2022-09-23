@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using StarDef.Core;
 using StarDef.Tiles;
+using Yee.VFX;
 
 namespace StarDef.Interactables
 {
@@ -16,6 +17,7 @@ namespace StarDef.Interactables
         bool weakPointDestroyed;
         Color regularColor;
         HealthStat health;
+        CameraShaker cameraShaker;
         Queue<EnergyGenerator> generatorsQueue = new Queue<EnergyGenerator>();
 
         public bool IsDestroyed { get => weakPointDestroyed; }
@@ -23,6 +25,7 @@ namespace StarDef.Interactables
         private void Awake()
         {
             health = FindObjectOfType<HealthStat>();
+            cameraShaker = FindObjectOfType<CameraShaker>();
             regularColor = indicator.material.color;
             foreach (var item in generatorsAttached) { generatorsQueue.Enqueue(item); }
         }
@@ -43,6 +46,7 @@ namespace StarDef.Interactables
         {
             audioSource.Play();
             explosionParticles.Play();
+            StartCoroutine(cameraShaker.Shake());
             ChangeColorToDamage();
 
             if (generatorsQueue.Count > 0) { Invoke("ChangeColorToRegular", 1); }
