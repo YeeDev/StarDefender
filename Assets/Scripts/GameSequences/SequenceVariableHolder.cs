@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Yee.Dialogue;
 using StarDef.Tutorials;
+using System;
 
 namespace StarDef.Info
 {
@@ -15,9 +16,10 @@ namespace StarDef.Info
         public Text CommanderText { get => commanderText; }
         public Animator CommanderAnimator { get => commanderAnimator; }
         public DialoguePrinter Printer { get => printer; }
-        public TutorialTag TutorialMask { get => tutorialObjects[Tag.Tutorial_Mask]; }
+        public TutMaskTag GetAnimatedMask { get => tutorialMasks[MaskTag.Tutorial_Mask]; }
 
-        Dictionary<Tag, TutorialTag> tutorialObjects = new Dictionary<Tag, TutorialTag>();
+        Dictionary<MaskTag, TutMaskTag> tutorialMasks = new Dictionary<MaskTag, TutMaskTag>();
+        Dictionary<ObjectTag, TutObjectTag> tutorialObjects = new Dictionary<ObjectTag, TutObjectTag>();
 
         public SequenceVariableHolder()
         {
@@ -27,35 +29,41 @@ namespace StarDef.Info
             commanderAnimator = commanderWindow.GetComponent<Animator>();
             commanderText = commanderWindow.GetComponentInChildren<Text>();
 
-            CreateTutorialDictionary();
+            PopulateDictionaries();
         }
 
-        private void CreateTutorialDictionary()
+        private void PopulateDictionaries()
         {
-            foreach (TutorialTag tutorial in Resources.FindObjectsOfTypeAll<TutorialTag>())
-            {
-                if (tutorialObjects.ContainsKey(tutorial.GetTag))
-                {
-                    string dupObjectName = tutorial.transform.name;
-                    string previousObjectName = tutorialObjects[tutorial.GetTag].transform.name;
-                    Debug.LogWarning($"Duplicated tutorial tag: {dupObjectName} same as {previousObjectName}");
-                    continue;
-                }
+            List<TutMaskTag> tutMasks = CreateList<TutMaskTag>(new List<TutMaskTag>());
+            foreach (TutMaskTag item in tutMasks) { tutorialMasks.Add(item.GetTag, item); }
 
-                tutorialObjects.Add(tutorial.GetTag, tutorial);
-            }
-
-            if (!tutorialObjects.ContainsKey(Tag.Tutorial_Mask))
-            {
-                Debug.LogWarning("No Tutorial Mask was found, tutorials won't work;");
-            }
+            List<TutObjectTag> tutObjects = CreateList<TutObjectTag>(new List<TutObjectTag>());
+            foreach (TutObjectTag item in tutObjects) { tutorialObjects.Add(item.GetTag, item); }
         }
 
-        public TutorialTag GetTutorialObject(Tag tutorialTag)
+        private List<TTutorialType> CreateList<TTutorialType>(List<TTutorialType> listToPopulate)
         {
-            if (tutorialObjects.ContainsKey(tutorialTag)) { return tutorialObjects[tutorialTag]; }
+            foreach (var item in Resources.FindObjectsOfTypeAll(typeof(TTutorialType)) as TTutorialType[])
+            {
+                listToPopulate.Add(item);
+            }
 
-            Debug.LogError($"There's no tutorial object with tag {tutorialTag}.");
+            return listToPopulate;
+        }
+
+        public TutMaskTag GetTutorialMask(MaskTag maskTag)
+        {
+            if (tutorialMasks.ContainsKey(maskTag)) { return tutorialMasks[maskTag]; }
+
+            Debug.LogError($"There's no tutorial mask with tag {maskTag}.");
+            return null;
+        }
+
+        public TutObjectTag GetTutorialObject(ObjectTag objectTag)
+        {
+            if (tutorialObjects.ContainsKey(objectTag)) { return tutorialObjects[objectTag]; }
+
+            Debug.LogError($"There's no tutorial object with tag {objectTag}.");
             return null;
         }
     }
