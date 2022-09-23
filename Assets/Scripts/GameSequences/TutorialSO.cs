@@ -8,6 +8,7 @@ namespace StarDef.GameSequences
     [CreateAssetMenu(fileName = "New Tutorial", menuName = "Tutorial")]
     public class TutorialSO : ScriptableObject, ISequence
     {
+        [SerializeField] [Range(0, 10)] int timeToWait = 0;
         [SerializeField] MaskTag tutorialMask = MaskTag.NONE;
         [SerializeField] ObjectTag tutorialObject = ObjectTag.NONE;
 
@@ -20,12 +21,14 @@ namespace StarDef.GameSequences
             tutorialFader.SetBool("InTutorial", true);
             usedMask.SetActive(true);
 
-            if(tutObject != null)
+            if(tutorialObject != ObjectTag.NONE && tutObject != null)
             {
                 tutObject.ChangeInTutorialStatus();
                 yield return new WaitUntil(() => tutObject.Pressed);
                 tutObject.ChangeInTutorialStatus();
             }
+
+            if (timeToWait > 0) { yield return new WaitForSeconds(timeToWait); }
 
             tutorialFader.SetBool("InTutorial", false);
 
