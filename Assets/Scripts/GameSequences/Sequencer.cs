@@ -18,9 +18,9 @@ namespace StarDef.GameSequences
             infoHolder = new SequenceVariableHolder();
         }
 
-        private void Start() { StartCoroutine(RunWaves()); }
+        private void Start() { StartCoroutine(RunSequences()); }
 
-        private IEnumerator RunWaves()
+        private IEnumerator RunSequences()
         {
             foreach (ISequence sequence in gameSequence)
             {
