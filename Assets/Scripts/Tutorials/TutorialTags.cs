@@ -2,6 +2,7 @@ namespace StarDef.Tutorials
 {
     public enum MaskTag
     {
+        NONE,
         Tutorial_0,
         Tutorial_1,
         Tutorial_3,
@@ -16,6 +17,7 @@ namespace StarDef.Tutorials
 
     public enum ObjectTag
     {
+        NONE,
         TutObject_0,
         TutObject_1,
         TutObject_2,
