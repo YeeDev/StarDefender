@@ -24,6 +24,7 @@ namespace StarDef.GameSequences
             {
                 tutObject.ChangeInTutorialStatus();
                 yield return new WaitUntil(() => tutObject.Pressed);
+                tutObject.ChangeInTutorialStatus();
             }
 
             tutorialFader.SetBool("InTutorial", false);
