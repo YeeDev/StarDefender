@@ -35,10 +35,14 @@ namespace StarDef.Tiles
         private void Awake()
         {
             text = GetComponentInChildren<TextMesh>();
+
+            if (Application.isPlaying) { text.gameObject.SetActive(false); }
         }
 
         void Update()
         {
+            if (Application.isPlaying) { return; }
+
             Vector2Int coordinates = GridCoordinates;
 
             text.text = $"({coordinates.x},{coordinates.y})";
