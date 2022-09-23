@@ -14,7 +14,6 @@ namespace StarDef.Info
         ControlEnabler controlEnabler;
         DialoguePrinter printer;
 
-
         public Text CommanderText { get => commanderText; }
         public Animator CommanderAnimator { get => commanderAnimator; }
         public ControlEnabler ControlEnabler { get => controlEnabler; }
