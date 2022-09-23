@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Yee.Dialogue;
 using StarDef.Tutorials;
+using StarDef.Core;
 
 namespace StarDef.Info
 {
@@ -10,10 +11,13 @@ namespace StarDef.Info
     {
         Text commanderText;
         Animator commanderAnimator;
+        ControlEnabler controlEnabler;
         DialoguePrinter printer;
+
 
         public Text CommanderText { get => commanderText; }
         public Animator CommanderAnimator { get => commanderAnimator; }
+        public ControlEnabler ControlEnabler { get => controlEnabler; }
         public DialoguePrinter Printer { get => printer; }
         public TutorialMask GetAnimatedMask { get => tutorialMasks[MaskTag.Tutorial_Mask]; }
 
@@ -27,6 +31,8 @@ namespace StarDef.Info
             GameObject commanderWindow = GameObject.FindGameObjectWithTag("CommanderWindow");
             commanderAnimator = commanderWindow.GetComponent<Animator>();
             commanderText = commanderWindow.GetComponentInChildren<Text>();
+
+            controlEnabler = GameObject.FindObjectOfType<ControlEnabler>();
 
             PopulateDictionaries();
         }
