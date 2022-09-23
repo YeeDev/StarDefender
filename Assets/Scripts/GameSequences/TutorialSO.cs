@@ -16,7 +16,7 @@ namespace StarDef.GameSequences
         {
             Animator tutorialFader = infoHolder.GetAnimatedMask.GetAnimator;
             GameObject usedMask = infoHolder.GetTutorialMask(tutorialMask).gameObject;
-            TutObjectTag tutObject = infoHolder.GetTutorialObject(tutorialObject);
+            TutorialObject tutObject = infoHolder.GetTutorialObject(tutorialObject);
 
             tutorialFader.SetBool("InTutorial", true);
             usedMask.SetActive(true);

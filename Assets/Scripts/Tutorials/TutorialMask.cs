@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace StarDef.Tutorials
 {
-    public class TutMaskTag : MonoBehaviour
+    public class TutorialMask : MonoBehaviour
     {
         [SerializeField] MaskTag tutorialTag = MaskTag.NONE;
         Animator animator;

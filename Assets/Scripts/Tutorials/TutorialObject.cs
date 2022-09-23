@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace StarDef.Tutorials
 {
-    public class TutObjectTag : MonoBehaviour
+    public class TutorialObject : MonoBehaviour
     {
         [SerializeField] ObjectTag tutorialTag = ObjectTag.NONE;
 

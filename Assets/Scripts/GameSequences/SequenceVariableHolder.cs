@@ -15,10 +15,10 @@ namespace StarDef.Info
         public Text CommanderText { get => commanderText; }
         public Animator CommanderAnimator { get => commanderAnimator; }
         public DialoguePrinter Printer { get => printer; }
-        public TutMaskTag GetAnimatedMask { get => tutorialMasks[MaskTag.Tutorial_Mask]; }
+        public TutorialMask GetAnimatedMask { get => tutorialMasks[MaskTag.Tutorial_Mask]; }
 
-        Dictionary<MaskTag, TutMaskTag> tutorialMasks = new Dictionary<MaskTag, TutMaskTag>();
-        Dictionary<ObjectTag, TutObjectTag> tutorialObjects = new Dictionary<ObjectTag, TutObjectTag>();
+        Dictionary<MaskTag, TutorialMask> tutorialMasks = new Dictionary<MaskTag, TutorialMask>();
+        Dictionary<ObjectTag, TutorialObject> tutorialObjects = new Dictionary<ObjectTag, TutorialObject>();
 
         public SequenceVariableHolder()
         {
@@ -33,11 +33,11 @@ namespace StarDef.Info
 
         private void PopulateDictionaries()
         {
-            List<TutMaskTag> tutMasks = CreateList<TutMaskTag>(new List<TutMaskTag>());
-            foreach (TutMaskTag item in tutMasks) { tutorialMasks.Add(item.GetTag, item); }
+            List<TutorialMask> tutMasks = CreateList<TutorialMask>(new List<TutorialMask>());
+            foreach (TutorialMask item in tutMasks) { tutorialMasks.Add(item.GetTag, item); }
 
-            List<TutObjectTag> tutObjects = CreateList<TutObjectTag>(new List<TutObjectTag>());
-            foreach (TutObjectTag item in tutObjects) { tutorialObjects.Add(item.GetTag, item); }
+            List<TutorialObject> tutObjects = CreateList<TutorialObject>(new List<TutorialObject>());
+            foreach (TutorialObject item in tutObjects) { tutorialObjects.Add(item.GetTag, item); }
         }
 
         private List<TTutorialType> CreateList<TTutorialType>(List<TTutorialType> listToPopulate)
@@ -50,7 +50,7 @@ namespace StarDef.Info
             return listToPopulate;
         }
 
-        public TutMaskTag GetTutorialMask(MaskTag maskTag)
+        public TutorialMask GetTutorialMask(MaskTag maskTag)
         {
             if (tutorialMasks.ContainsKey(maskTag)) { return tutorialMasks[maskTag]; }
 
@@ -58,7 +58,7 @@ namespace StarDef.Info
             return null;
         }
 
-        public TutObjectTag GetTutorialObject(ObjectTag objectTag)
+        public TutorialObject GetTutorialObject(ObjectTag objectTag)
         {
             if (tutorialObjects.ContainsKey(objectTag)) { return tutorialObjects[objectTag]; }
 

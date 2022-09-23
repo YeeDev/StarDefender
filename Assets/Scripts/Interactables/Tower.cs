@@ -17,7 +17,7 @@ namespace StarDef.Interactables
         EnergyFinder energyFinder;
         EnergyGenerator generator;
         AudioSource audioSource;
-        TutObjectTag tutorialTag;
+        TutorialObject tutorialTag;
         List<MeshRenderer> indicators;
 
         Transform mainTarget;
@@ -26,7 +26,7 @@ namespace StarDef.Interactables
         {
             animator = GetComponent<Animator>();
             audioSource = GetComponent<AudioSource>();
-            tutorialTag = GetComponent<TutObjectTag>();
+            tutorialTag = GetComponent<TutorialObject>();
 
             energyFinder = FindObjectOfType<EnergyFinder>();
         }
