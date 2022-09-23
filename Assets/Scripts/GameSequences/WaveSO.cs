@@ -23,10 +23,11 @@ namespace StarDef.GameSequences
         public IEnumerator PlayWave(SequenceVariableHolder infoHolder)
         {
             int totalEnemiesSpawned = 0;
-            List<Transform> path = infoHolder.GetPathFinder.FindPath(startPoint, endPoint);
 
             while (totalEnemiesSpawned < numberOfEnemies)
             {
+                List<Transform> path = infoHolder.GetPathFinder.FindPath(startPoint, GetEndPoint(infoHolder));
+
                 totalEnemiesSpawned++;
                 Instantiate(enemyType, CalculateSpawnPoint(path[0]), Quaternion.identity).GetComponent<Ship>().SetPath = path;
                 yield return new WaitForSeconds(timeBetweenEnemies);
@@ -37,6 +38,19 @@ namespace StarDef.GameSequences
                     yield return decorator.PlaySequence(infoHolder);
                 }
             }
+        }
+
+        private Vector2Int GetEndPoint(SequenceVariableHolder infoHolder)
+        {
+            if (infoHolder.GetPathFinder.WeakPointDestroyed(endPoint))
+            {
+                foreach (Vector2Int otherEndPoint in alternativeEndPoints)
+                {
+                    if (!infoHolder.GetPathFinder.WeakPointDestroyed(otherEndPoint)) { return otherEndPoint; }
+                }
+            }
+
+            return endPoint;
         }
 
         private Vector3 CalculateSpawnPoint(Transform initialTile)

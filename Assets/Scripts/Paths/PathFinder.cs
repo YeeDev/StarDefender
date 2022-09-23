@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using StarDef.Tiles;
+using StarDef.Interactables;
 
 namespace StarDef.Paths
 {
@@ -11,19 +12,21 @@ namespace StarDef.Paths
         Queue<Tile> tilesToExplore = new Queue<Tile>();
         Dictionary<Vector2Int, Tile> grid = new Dictionary<Vector2Int, Tile>();
 
-        public Dictionary<Vector2Int, Tile> GetGrid { get => grid; } 
-
         private void Awake() { LoadTiles(); }
 
         private void LoadTiles()
         {
-            var waypoints = FindObjectsOfType<Tile>();
-            foreach (Tile tile in waypoints)
+            foreach (Tile tile in FindObjectsOfType<Tile>())
             {
                 var gridPos = tile.GridCoordinates;
                 if (grid.ContainsKey(gridPos)) { Debug.LogWarning("Skipping overlapping block " + tile); }
                 else { grid.Add(gridPos, tile); }
             }
+        }
+
+        public bool WeakPointDestroyed(Vector2Int generatorCoordinates)
+        {
+            return grid[generatorCoordinates].GetComponent<WeakPoint>().IsDestroyed;
         }
 
         public List<Transform> FindPath(Vector2Int startCoordinate, Vector2Int endCoordinate)

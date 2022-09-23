@@ -10,7 +10,10 @@ namespace StarDef.Interactables
         [SerializeField] AudioSource audioSource = null;
         [SerializeField] EnergyGenerator generatorAttached = null;
 
+        bool weakPointDestroyed;
         HealthStat health;
+
+        public bool IsDestroyed { get => weakPointDestroyed; }
 
         private void Awake() { health = FindObjectOfType<HealthStat>(); }
 
@@ -18,6 +21,7 @@ namespace StarDef.Interactables
         {
             if (other.CompareTag("Missile"))
             {
+                weakPointDestroyed = true;
                 Destroy(other.gameObject);
                 audioSource.Play();
                 explosionParticles.Play();
