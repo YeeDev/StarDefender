@@ -14,13 +14,13 @@ namespace StarDef.Interactables
         [SerializeField] Transform towerHead = null;
         [SerializeField] Color enabledColor, disabledColor;
 
-        bool gameHasStarted;
+        bool controlEnabled;
         Animator animator;
         EnergyFinder energyFinder;
         EnergyGenerator generator;
         AudioSource audioSource;
         TutorialObject tutorialTag;
-        GameStarter gameStarter;
+        ControlEnabler gameStarter;
         List<MeshRenderer> indicators;
 
         Transform mainTarget;
@@ -31,7 +31,7 @@ namespace StarDef.Interactables
             audioSource = GetComponent<AudioSource>();
             tutorialTag = GetComponent<TutorialObject>();
 
-            gameStarter = FindObjectOfType<GameStarter>();
+            gameStarter = FindObjectOfType<ControlEnabler>();
             energyFinder = FindObjectOfType<EnergyFinder>();
         }
 
@@ -42,14 +42,14 @@ namespace StarDef.Interactables
             generator.AddPath(indicators);
         }
 
-        private void OnEnable() { gameStarter.OnGameStart += EnableControl; }
-        private void OnDisable() { gameStarter.OnGameStart -= EnableControl; }
+        private void OnEnable() { gameStarter.OnControlChange += EnableControl; }
+        private void OnDisable() { gameStarter.OnControlChange -= EnableControl; }
 
-        private void EnableControl() { gameHasStarted = true; }
+        private void EnableControl(bool isEnabled) { controlEnabled = isEnabled; }
 
         private void OnMouseDown()
         {
-            if (!gameHasStarted) { return; }
+            if (!controlEnabled) { return; }
 
             if (!generator.IsOn || !generator.CanBeUsed(transform)) { return; }
 
