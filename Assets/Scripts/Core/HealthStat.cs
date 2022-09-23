@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 using StarDef.Tiles;
 
@@ -6,34 +5,21 @@ namespace StarDef.Core
 {
     public class HealthStat : MonoBehaviour
     {
-        Queue<EnergyGenerator> generators = new Queue<EnergyGenerator>();
+        int totalGenerators;
 
-        public bool NoHealth { get => generators.Count <= 0; }
+        public bool NoHealth { get => totalGenerators <= 0; }
 
-        private void Awake()
+        private void Awake() { totalGenerators = FindObjectsOfType<EnergyGenerator>().Length; }
+
+        public void TakeDamage(EnergyGenerator energyGenerator)
         {
-            EnergyGenerator[] generatorsFound = FindObjectsOfType<EnergyGenerator>();
-
-            if (generatorsFound.Length <= 0)
+            if (energyGenerator.IsOn)
             {
-                Debug.LogError("Generators not found!");
-                return;
+                energyGenerator.DamageGenerator();
+                totalGenerators--;
             }
 
-            foreach (var generator in FindObjectsOfType<EnergyGenerator>())
-            {
-                generators.Enqueue(generator);
-            }
-        }
-
-        public void TakeDamage()
-        {
-            if (generators.Count <= 0) { return; }
-
-            EnergyGenerator generator = generators.Dequeue();
-            generator.DamageGenerator();
-
-            if (generators.Count <= 0) { Debug.Log("You lost!"); }
+            if (totalGenerators <= 0) { Debug.Log("You lost!"); } //TODO debug purposes, delete later
         }
     }
 }

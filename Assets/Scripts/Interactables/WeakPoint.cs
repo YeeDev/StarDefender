@@ -1,5 +1,6 @@
 using UnityEngine;
 using StarDef.Core;
+using StarDef.Tiles;
 
 namespace StarDef.Interactables
 {
@@ -7,6 +8,7 @@ namespace StarDef.Interactables
     {
         [SerializeField] ParticleSystem explosionParticles = null;
         [SerializeField] AudioSource audioSource = null;
+        [SerializeField] EnergyGenerator generatorAttached = null;
 
         HealthStat health;
 
@@ -19,7 +21,7 @@ namespace StarDef.Interactables
                 Destroy(other.gameObject);
                 audioSource.Play();
                 explosionParticles.Play();
-                health.TakeDamage();
+                health.TakeDamage(generatorAttached);
             }
         }
     }
