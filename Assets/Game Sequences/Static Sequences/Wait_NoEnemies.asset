@@ -9,6 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b870efa019544863a52be3e19db014a, type: 3}
-  m_Name: WaitInput
+  m_Script: {fileID: 11500000, guid: f135cd8e52c8048d9ae3d6d94795e579, type: 3}
+  m_Name: Wait_NoEnemies
   m_EditorClassIdentifier: 
