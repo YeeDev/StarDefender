@@ -9,7 +9,7 @@ namespace StarDef.GameSequences
     {
         public IEnumerator PlaySequence(SequenceVariableHolder infoHolder)
         {
-            yield return new WaitUntil(() => infoHolder.GetActiveEnemies <= 0);
+            yield return new WaitUntil(() => infoHolder.GetActiveEnemies <= 0 || infoHolder.Health.NoHealth);
             yield return new WaitForSeconds(1f);
         }
     }

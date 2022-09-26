@@ -8,15 +8,11 @@ namespace StarDef.GameSequences
     public class Sequencer : MonoBehaviour
     {
         [SerializeField] ScriptableObject[] gameSequence = null;
+        [SerializeField] ScriptableObject[] loseSequence = null;
 
-        HealthStat health;
         SequenceVariableHolder infoHolder;
 
-        private void Awake()
-        {
-            health = FindObjectOfType<HealthStat>();
-            infoHolder = new SequenceVariableHolder();
-        }
+        private void Awake() { infoHolder = new SequenceVariableHolder(); }
 
         private void Start() { StartCoroutine(RunSequences()); }
 
@@ -24,7 +20,20 @@ namespace StarDef.GameSequences
         {
             foreach (ISequence sequence in gameSequence)
             {
-                if(health.NoHealth) { yield break; }
+                if(infoHolder.Health.NoHealth)
+                {
+                    StartCoroutine(RunLoseSequence());
+                    yield break;
+                }
+
+                yield return sequence.PlaySequence(infoHolder);
+            }
+        }
+
+        private IEnumerator RunLoseSequence()
+        {
+            foreach (ISequence sequence in loseSequence)
+            {
                 yield return sequence.PlaySequence(infoHolder);
             }
         }

@@ -16,6 +16,7 @@ namespace StarDef.Info
         Animator messagesAnimator;
         Animator faderAnimator;
         PathFinder pathFinder;
+        HealthStat health;
         ControlEnabler controlEnabler;
         
         DialoguePrinter printer;
@@ -26,6 +27,7 @@ namespace StarDef.Info
         public Animator MessagesAnimator { get => messagesAnimator; }
         public Animator FaderAnimator { get => faderAnimator; }
         public PathFinder GetPathFinder { get => pathFinder; }
+        public HealthStat Health { get => health; }
         public ControlEnabler ControlEnabler { get => controlEnabler; }
         public DialoguePrinter Printer { get => printer; }
         public TutorialMask GetAnimatedMask { get => tutorialMasks[MaskTag.Tutorial_Mask]; }
@@ -46,6 +48,7 @@ namespace StarDef.Info
 
             controlEnabler = GameObject.FindObjectOfType<ControlEnabler>();
             pathFinder = GameObject.FindObjectOfType<PathFinder>();
+            health = GameObject.FindObjectOfType<HealthStat>();
 
             PopulateDictionaries();
         }
