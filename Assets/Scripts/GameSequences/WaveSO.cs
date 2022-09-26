@@ -33,6 +33,7 @@ namespace StarDef.GameSequences
                 Ship enemy = Instantiate(enemyType, CalculateSpawnPoint(path[0]), Quaternion.identity).GetComponent<Ship>();
                 enemy.SetPath = path;
                 enemy.SetInfoHolder = infoHolder;
+                infoHolder.AddActiveEnemy();
 
                 yield return new WaitForSeconds(timeBetweenEnemies);
 

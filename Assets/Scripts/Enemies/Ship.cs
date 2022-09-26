@@ -103,7 +103,7 @@ namespace StarDef.Enemies
         //Also Called in Animation
         private void Remove()
         {
-            infoHolder.RemoveActiveEnemy(gameObject);
+            infoHolder.RemoveActiveEnemy();
             Destroy(gameObject);
         }
     }
