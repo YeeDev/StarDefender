@@ -12,6 +12,7 @@ namespace StarDef.Info
     {
         Text commanderText;
         Animator commanderAnimator;
+        Animator messagesAnimator;
         PathFinder pathFinder;
         ControlEnabler controlEnabler;
         
@@ -19,6 +20,7 @@ namespace StarDef.Info
 
         public Text CommanderText { get => commanderText; }
         public Animator CommanderAnimator { get => commanderAnimator; }
+        public Animator MessagesAnimator { get => messagesAnimator; }
         public PathFinder GetPathFinder { get => pathFinder; }
         public ControlEnabler ControlEnabler { get => controlEnabler; }
         public DialoguePrinter Printer { get => printer; }
@@ -30,6 +32,8 @@ namespace StarDef.Info
         public SequenceVariableHolder()
         {
             printer = GameObject.FindObjectOfType<DialoguePrinter>();
+
+            messagesAnimator = GameObject.FindGameObjectWithTag("Messages").GetComponent<Animator>();
 
             GameObject commanderWindow = GameObject.FindGameObjectWithTag("CommanderWindow");
             commanderAnimator = commanderWindow.GetComponent<Animator>();
