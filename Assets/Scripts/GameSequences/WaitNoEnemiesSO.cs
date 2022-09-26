@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace StarDef.GameSequences
 {
-    [CreateAssetMenu(fileName = "New Wait Enemies", menuName = "Wait No Enemies")]
+    [CreateAssetMenu(fileName = "New Wait Enemies", menuName = "Sequences/Static/Wait No Enemies")]
     public class WaitNoEnemiesSO : ScriptableObject, ISequence
     {
         public IEnumerator PlaySequence(SequenceVariableHolder infoHolder)

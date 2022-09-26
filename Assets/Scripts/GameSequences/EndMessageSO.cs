@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace StarDef.GameSequences
 {
-    [CreateAssetMenu(fileName = "New End Message", menuName = "End Message")]
+    [CreateAssetMenu(fileName = "New End Message", menuName = "Sequences/Static/End Message")]
     public class EndMessageSO : ScriptableObject, ISequence
     {
         [SerializeField] bool showWinMessage = true;

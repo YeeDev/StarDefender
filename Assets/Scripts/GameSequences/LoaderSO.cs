@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 namespace StarDef.GameSequences
 {
-    [CreateAssetMenu(fileName = "New Loader", menuName = "Static Sequences/Loader")]
+    [CreateAssetMenu(fileName = "New Loader", menuName = "Sequences/Static/Loader")]
     public class LoaderSO : ScriptableObject, ISequence
     {
         [SerializeField] bool loadNextLevel = true;

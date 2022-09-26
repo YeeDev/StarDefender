@@ -4,7 +4,7 @@ using StarDef.Info;
 
 namespace StarDef.GameSequences
 {
-    [CreateAssetMenu(fileName = "New Window Action", menuName = "Window Action")]
+    [CreateAssetMenu(fileName = "New Window Action", menuName = "Sequences/Static/Window Action")]
     public class WindowControllerSO : ScriptableObject, ISequence
     {
         [SerializeField] bool opensWindow = true;

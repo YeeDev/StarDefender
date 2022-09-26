@@ -4,7 +4,7 @@ using StarDef.Info;
 
 namespace StarDef.GameSequences
 {
-    [CreateAssetMenu(fileName = "New Control Enabler", menuName = "Control Enabler")]
+    [CreateAssetMenu(fileName = "New Control Enabler", menuName = "Sequences/Static/Control Enabler")]
     public class ControlEnablerSO : ScriptableObject, ISequence
     {
         [SerializeField] bool enableControl = false;

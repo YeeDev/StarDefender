@@ -10,6 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3e2d6cdfd12404fb19253a56b67fecbd, type: 3}
-  m_Name: Wait_Win
+  m_Name: Wait_2Sec
   m_EditorClassIdentifier: 
   timeToWait: 2.2
