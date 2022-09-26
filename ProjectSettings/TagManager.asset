@@ -7,6 +7,7 @@ TagManager:
   - Corner
   - Missile
   - CommanderWindow
+  - Messages
   layers:
   - Default
   - TransparentFX
