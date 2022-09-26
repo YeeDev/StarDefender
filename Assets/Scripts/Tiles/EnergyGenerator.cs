@@ -7,6 +7,7 @@ namespace StarDef.Tiles
     {
         [SerializeField] MeshRenderer indicator = null;
         [SerializeField] Color damagedColor = Color.red;
+        [SerializeField] GameObject smokeParticles = null;
 
         List<MeshRenderer> paths = new List<MeshRenderer>();
 
@@ -24,6 +25,7 @@ namespace StarDef.Tiles
         public void DamageGenerator()
         {
             indicator.material.color = damagedColor;
+            smokeParticles.SetActive(true);
 
             foreach (var indicator in paths)
             {
