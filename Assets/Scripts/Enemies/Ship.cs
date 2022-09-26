@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using StarDef.Info;
 
 namespace StarDef.Enemies
 {
@@ -20,8 +21,10 @@ namespace StarDef.Enemies
         bool missileFired;
         Animator anm;
         List<Transform> path = null;
+        SequenceVariableHolder infoHolder;
 
         public List<Transform> SetPath { set => path = value; }
+        public SequenceVariableHolder SetInfoHolder { set => infoHolder = value; }
 
         private void Awake()
         {
@@ -93,8 +96,15 @@ namespace StarDef.Enemies
             if (health <= 0)
             {
                 Instantiate(explosionParticles, transform.position, Quaternion.identity);
-                Destroy(gameObject);//TODO Pooler if needed
+                Remove();
             }
+        }
+
+        //Also Called in Animation
+        private void Remove()
+        {
+            infoHolder.RemoveActiveEnemy(gameObject);
+            Destroy(gameObject);
         }
     }
 }
