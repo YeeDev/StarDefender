@@ -9,8 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f218b813cde8945c18493ed37f394061, type: 3}
-  m_Name: OpenWindow
+  m_Script: {fileID: 11500000, guid: aaae5749575674c78a75a50715021a35, type: 3}
+  m_Name: Control_Disable
   m_EditorClassIdentifier: 
-  opensWindow: 1
-  timeItTakes: 1
+  enableControl: 0
