@@ -213,7 +213,7 @@ MonoBehaviour:
   isPath: 1
   isEnergy: 0
   isGenerator: 0
-  energyIndicator: {fileID: 0}
+  energyIndicator: {fileID: 8817508424425141537}
 --- !u!114 &5887688249744448328
 MonoBehaviour:
   m_ObjectHideFlags: 0
