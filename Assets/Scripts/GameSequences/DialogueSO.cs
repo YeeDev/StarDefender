@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace StarDef.GameSequences
 {
-    [CreateAssetMenu(fileName = "New Dialogue", menuName = "Dialogue")]
+    [CreateAssetMenu(fileName = "New Dialogue", menuName = "Sequences/Dialogue")]
     public class DialogueSO : ScriptableObject, ISequence
     {
         [SerializeField] [TextArea(2, 5)] string dialogue = null;

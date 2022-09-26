@@ -8,7 +8,7 @@ using StarDef.Tiles;
 
 namespace StarDef.GameSequences
 {
-    [CreateAssetMenu(fileName = "New Wave", menuName = "Wave")]
+    [CreateAssetMenu(fileName = "New Wave", menuName = "Sequences/Wave")]
     public class WaveSO : ScriptableObject, ISequence
     {
         [SerializeField] int numberOfEnemies = 5;

@@ -5,7 +5,7 @@ using StarDef.Tutorials;
 
 namespace StarDef.GameSequences
 {
-    [CreateAssetMenu(fileName = "New Tutorial", menuName = "Tutorial")]
+    [CreateAssetMenu(fileName = "New Tutorial", menuName = "Sequences/Tutorial")]
     public class TutorialSO : ScriptableObject, ISequence
     {
         [SerializeField] [Range(0, 10)] int timeToWait = 0;
