@@ -16,7 +16,8 @@ namespace StarDef.GameSequences
         [SerializeField] GameObject enemyType = null;
         [SerializeField] Vector2Int startPoint, endPoint;
         [SerializeField] Vector2Int[] alternativeEndPoints = null;
-        [SerializeField] ScriptableObject decoratorSequence = null; 
+        [SerializeField] ScriptableObject middleWaveDecorator = null;
+        [SerializeField] ScriptableObject endWaveDecorator = null;
 
         public IEnumerator PlaySequence(SequenceVariableHolder infoHolder) { yield return PlayWave(infoHolder); }
 
@@ -29,14 +30,23 @@ namespace StarDef.GameSequences
                 List<Transform> path = infoHolder.GetPathFinder.FindPath(startPoint, GetEndPoint(infoHolder));
 
                 totalEnemiesSpawned++;
-                Instantiate(enemyType, CalculateSpawnPoint(path[0]), Quaternion.identity).GetComponent<Ship>().SetPath = path;
+                Ship enemy = Instantiate(enemyType, CalculateSpawnPoint(path[0]), Quaternion.identity).GetComponent<Ship>();
+                enemy.SetPath = path;
+                enemy.SetInfoHolder = infoHolder;
+
                 yield return new WaitForSeconds(timeBetweenEnemies);
 
-                if (decoratorSequence != null)
+                if (middleWaveDecorator != null)
                 {
-                    ISequence decorator = (ISequence)decoratorSequence;
+                    ISequence decorator = (ISequence)middleWaveDecorator;
                     yield return decorator.PlaySequence(infoHolder);
                 }
+            }
+
+            if (endWaveDecorator != null)
+            {
+                ISequence decorator = (ISequence)endWaveDecorator;
+                yield return decorator.PlaySequence(infoHolder);
             }
         }
 
