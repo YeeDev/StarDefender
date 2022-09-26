@@ -18,8 +18,6 @@ namespace StarDef.Core
                 energyGenerator.DamageGenerator();
                 totalGenerators--;
             }
-
-            if (totalGenerators <= 0) { Debug.Log("You lost!"); } //TODO debug purposes, delete later
         }
     }
 }
