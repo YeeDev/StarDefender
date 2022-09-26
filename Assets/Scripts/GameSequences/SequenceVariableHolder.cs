@@ -18,6 +18,7 @@ namespace StarDef.Info
         
         DialoguePrinter printer;
 
+        public int GetActiveEnemies { get => enemiesActive.Count; }
         public Text CommanderText { get => commanderText; }
         public Animator CommanderAnimator { get => commanderAnimator; }
         public Animator MessagesAnimator { get => messagesAnimator; }
@@ -26,6 +27,7 @@ namespace StarDef.Info
         public DialoguePrinter Printer { get => printer; }
         public TutorialMask GetAnimatedMask { get => tutorialMasks[MaskTag.Tutorial_Mask]; }
 
+        List<GameObject> enemiesActive = new List<GameObject>();
         Dictionary<MaskTag, TutorialMask> tutorialMasks = new Dictionary<MaskTag, TutorialMask>();
         Dictionary<ObjectTag, TutorialObject> tutorialObjects = new Dictionary<ObjectTag, TutorialObject>();
 
@@ -79,5 +81,8 @@ namespace StarDef.Info
             Debug.LogError($"There's no tutorial object with tag {objectTag}.");
             return null;
         }
+
+        public void AddActiveEnemy(GameObject objectToAdd) { enemiesActive.Add(objectToAdd); }
+        public void RemoveActiveEnemy(GameObject objectToAdd) { enemiesActive.Remove(objectToAdd); }
     }
 }
