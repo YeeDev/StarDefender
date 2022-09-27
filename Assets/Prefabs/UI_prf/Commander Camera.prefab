@@ -87,7 +87,7 @@ GameObject:
   - component: {fileID: 5872452725254143905}
   m_Layer: 0
   m_Name: Commander_prb
-  m_TagString: Untagged
+  m_TagString: Commander
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
