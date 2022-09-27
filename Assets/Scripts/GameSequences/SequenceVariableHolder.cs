@@ -37,7 +37,6 @@ namespace StarDef.Info
 
         public SequenceVariableHolder()
         {
-            Debug.Log("Im running");
             printer = GameObject.FindObjectOfType<DialoguePrinter>();
 
             messagesAnimator = GameObject.FindGameObjectWithTag("Messages").GetComponent<Animator>();
