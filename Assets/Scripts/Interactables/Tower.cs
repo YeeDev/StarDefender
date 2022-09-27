@@ -49,14 +49,21 @@ namespace StarDef.Interactables
 
         private void OnMouseDown()
         {
-            if (!controlEnabled) { return; }
+            if (tutorialTag != null && tutorialTag.InTutorial)
+            {
+                Interact();
+                tutorialTag.InteractWithObject();
+            }
 
+            if (controlEnabled) { Interact(); }
+        }
+
+        private void Interact()
+        {
             if (!generator.IsOn || !generator.CanBeUsed(transform)) { return; }
 
             animator.SetBool("IsOpen", !animator.GetBool("IsOpen"));
             generator.UsedBy = animator.GetBool("IsOpen") ? transform : null;
-
-            if (tutorialTag != null && tutorialTag.InTutorial) { tutorialTag.InteractWithObject(); }
 
             ChangeIndicatorsColor();
         }
