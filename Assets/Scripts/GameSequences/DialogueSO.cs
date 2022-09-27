@@ -21,7 +21,9 @@ namespace StarDef.GameSequences
                 yield return decoratorSequence.PlaySequence(infoHolder);
             }
 
+            infoHolder.CommanderHead.SetBool("IsTalking", true);
             yield return infoHolder.Printer.PrintDialogue(dialogue, infoHolder.CommanderText);
+            infoHolder.CommanderHead.SetBool("IsTalking", false);
 
             if (afterPrintDecorator != null)
             {
