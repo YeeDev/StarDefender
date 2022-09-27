@@ -37,6 +37,7 @@ namespace StarDef.Info
 
         public SequenceVariableHolder()
         {
+            Debug.Log("Im running");
             printer = GameObject.FindObjectOfType<DialoguePrinter>();
 
             messagesAnimator = GameObject.FindGameObjectWithTag("Messages").GetComponent<Animator>();
@@ -56,7 +57,11 @@ namespace StarDef.Info
         private void PopulateDictionaries()
         {
             List<TutorialMask> tutMasks = CreateList<TutorialMask>(new List<TutorialMask>());
-            foreach (TutorialMask item in tutMasks) { tutorialMasks.Add(item.GetTag, item); }
+            foreach (TutorialMask item in tutMasks)
+            {
+                tutorialMasks.Add(item.GetTag, item);
+                if (item.GetTag != MaskTag.Tutorial_Mask) { item.gameObject.SetActive(false); }
+            }
 
             List<TutorialObject> tutObjects = CreateList<TutorialObject>(new List<TutorialObject>());
             foreach (TutorialObject item in tutObjects) { tutorialObjects.Add(item.GetTag, item); }
@@ -64,7 +69,7 @@ namespace StarDef.Info
 
         private List<TTutorialType> CreateList<TTutorialType>(List<TTutorialType> listToPopulate)
         {
-            foreach (var item in Resources.FindObjectsOfTypeAll(typeof(TTutorialType)) as TTutorialType[])
+            foreach (var item in GameObject.FindObjectsOfType(typeof(TTutorialType)) as TTutorialType[])
             {
                 listToPopulate.Add(item);
             }
