@@ -16,6 +16,7 @@ namespace StarDef.GameSequences
         [SerializeField] GameObject enemyType = null;
         [SerializeField] Vector2Int startPoint, endPoint;
         [SerializeField] Vector2Int[] alternativeEndPoints = null;
+        [SerializeField] ScriptableObject beforeWaveDecorator = null;
         [SerializeField] ScriptableObject middleWaveDecorator = null;
         [SerializeField] ScriptableObject endWaveDecorator = null;
 
@@ -23,6 +24,12 @@ namespace StarDef.GameSequences
 
         public IEnumerator PlayWave(SequenceVariableHolder infoHolder)
         {
+            if (beforeWaveDecorator != null)
+            {
+                ISequence decorator = (ISequence)beforeWaveDecorator;
+                yield return decorator.PlaySequence(infoHolder);
+            }
+
             int totalEnemiesSpawned = 0;
 
             while (totalEnemiesSpawned < numberOfEnemies)
