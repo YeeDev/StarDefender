@@ -21,15 +21,13 @@ namespace StarDef.GameSequences
 
         private IEnumerator RunSequences()
         {
+            StartCoroutine(RunLoseSequence());
+
             ScriptableObject[] sequenceToUse = testSequence.Length > 0 ? testSequence : gameSequence;
 
             foreach (ISequence sequence in sequenceToUse)
             {
-                if(infoHolder.Health.NoHealth)
-                {
-                    StartCoroutine(RunLoseSequence());
-                    yield break;
-                }
+                if (infoHolder.Health.NoHealth) { yield break; }
 
                 yield return sequence.PlaySequence(infoHolder);
             }
@@ -37,6 +35,8 @@ namespace StarDef.GameSequences
 
         private IEnumerator RunLoseSequence()
         {
+            yield return new WaitUntil(() => infoHolder.Health.NoHealth);
+
             foreach (ISequence sequence in loseSequence)
             {
                 yield return sequence.PlaySequence(infoHolder);
