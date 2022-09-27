@@ -686,7 +686,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 123333259477450197, guid: 3a6e111f399f94a979833563f7921e44, type: 3}
       propertyPath: loseSequence.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 123333259477450197, guid: 3a6e111f399f94a979833563f7921e44, type: 3}
       propertyPath: testSequence.Array.size

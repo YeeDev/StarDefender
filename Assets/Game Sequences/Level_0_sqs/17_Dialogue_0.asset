@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd6979a7a53724f2e8a17aa597b2e3a8, type: 3}
   m_Name: 17_Dialogue_0
   m_EditorClassIdentifier: 
-  dialogue: "The enemy is trying to attack another zone. Lets move!<color=green>\u25BC</color>"
+  dialogue: "The enemy is preparing an assault in another area! Lets move!<color=green>\u25BC</color>"
   beforePrintDecorator: {fileID: 0}
   afterPrintDecorator: {fileID: 11400000, guid: 70d2f27a4ed404f589ce9af57cb63136, type: 2}
