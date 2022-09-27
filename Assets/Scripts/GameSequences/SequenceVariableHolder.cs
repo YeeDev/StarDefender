@@ -15,6 +15,7 @@ namespace StarDef.Info
         Animator commanderAnimator;
         Animator messagesAnimator;
         Animator faderAnimator;
+        Animator commanderHead;
         PathFinder pathFinder;
         HealthStat health;
         ControlEnabler controlEnabler;
@@ -26,6 +27,7 @@ namespace StarDef.Info
         public Animator CommanderAnimator { get => commanderAnimator; }
         public Animator MessagesAnimator { get => messagesAnimator; }
         public Animator FaderAnimator { get => faderAnimator; }
+        public Animator CommanderHead { get => commanderHead; }
         public PathFinder GetPathFinder { get => pathFinder; }
         public HealthStat Health { get => health; }
         public ControlEnabler ControlEnabler { get => controlEnabler; }
@@ -41,6 +43,7 @@ namespace StarDef.Info
 
             messagesAnimator = GameObject.FindGameObjectWithTag("Messages").GetComponent<Animator>();
             faderAnimator = GameObject.FindGameObjectWithTag("Finish").GetComponent<Animator>();
+            commanderHead = GameObject.FindGameObjectWithTag("Commander").GetComponent<Animator>();
 
             GameObject commanderWindow = GameObject.FindGameObjectWithTag("CommanderWindow");
             commanderAnimator = commanderWindow.GetComponent<Animator>();
