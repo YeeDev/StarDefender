@@ -9,13 +9,13 @@ namespace StarDef.GameSequences
     public class TutorialSO : ScriptableObject, ISequence
     {
         [SerializeField] [Range(0, 10)] int timeToWait = 0;
-        [SerializeField] MaskTag tutorialMask = MaskTag.NONE;
+        [SerializeField] MaskTag tutorialIndicator = MaskTag.NONE;
         [SerializeField] ObjectTag tutorialObject = ObjectTag.NONE;
 
         public IEnumerator PlaySequence(SequenceVariableHolder infoHolder)
         {
             Animator tutorialFader = infoHolder.GetAnimatedMask.GetAnimator;
-            GameObject usedMask = infoHolder.GetTutorialMask(tutorialMask).gameObject;
+            GameObject usedMask = infoHolder.GetTutorialMask(tutorialIndicator).gameObject;
             TutorialObject tutObject = infoHolder.GetTutorialObject(tutorialObject);
 
             tutorialFader.SetBool("InTutorial", true);
