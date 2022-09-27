@@ -18,5 +18,6 @@ MonoBehaviour:
   startPoint: {x: -6, y: -3}
   endPoint: {x: 4, y: -3}
   alternativeEndPoints: []
+  beforeWaveDecorator: {fileID: 0}
   middleWaveDecorator: {fileID: 0}
-  endWaveDecorator: {fileID: 0}
+  endWaveDecorator: {fileID: 11400000, guid: 4e61b3d6f278b40048569a647e2138a8, type: 2}
