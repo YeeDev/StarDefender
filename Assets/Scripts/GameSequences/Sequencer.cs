@@ -10,6 +10,9 @@ namespace StarDef.GameSequences
         [SerializeField] ScriptableObject[] gameSequence = null;
         [SerializeField] ScriptableObject[] loseSequence = null;
 
+        [Header("Testing Options")]
+        [SerializeField] ScriptableObject[] testSequence = null;
+
         SequenceVariableHolder infoHolder;
 
         private void Awake() { infoHolder = new SequenceVariableHolder(); }
@@ -18,7 +21,9 @@ namespace StarDef.GameSequences
 
         private IEnumerator RunSequences()
         {
-            foreach (ISequence sequence in gameSequence)
+            ScriptableObject[] sequenceToUse = testSequence.Length > 0 ? testSequence : gameSequence;
+
+            foreach (ISequence sequence in sequenceToUse)
             {
                 if(infoHolder.Health.NoHealth)
                 {
