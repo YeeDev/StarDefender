@@ -18,7 +18,6 @@ namespace StarDef.GameSequences
         {
             Animator tutorialFader = infoHolder.GetAnimatedMask.GetAnimator;
             GameObject usedMask = infoHolder.GetTutorialMask(tutorialIndicator).gameObject;
-            TutorialObject tutObject = infoHolder.GetTutorialObject(tutorialObject);
 
             tutorialFader.SetBool("InTutorial", true);
             usedMask.SetActive(true);
@@ -29,8 +28,10 @@ namespace StarDef.GameSequences
                 yield return decorator.PlaySequence(infoHolder);
             }
 
-            if (tutorialObject != ObjectTag.NONE && tutObject != null)
+            if (tutorialObject != ObjectTag.NONE)
             {
+                TutorialObject tutObject = infoHolder.GetTutorialObject(tutorialObject);
+
                 tutObject.ChangeInTutorialStatus();
                 yield return new WaitUntil(() => tutObject.Pressed);
                 tutObject.ChangeInTutorialStatus();
