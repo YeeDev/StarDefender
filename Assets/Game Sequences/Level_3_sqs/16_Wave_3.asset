@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dd6a292e503ff48cf981fac964cd747f, type: 3}
-  m_Name: 17_WaveD_X
+  m_Name: 16_Wave_3
   m_EditorClassIdentifier: 
-  numberOfEnemies: 1
-  timeBetweenEnemies: 1.5
+  numberOfEnemies: 4
+  timeBetweenEnemies: 3
   enemyType: {fileID: 1016377805862053576, guid: eb7919a5b2fd649209036d08d143c325, type: 3}
-  startPoint: {x: 1, y: 4}
+  startPoint: {x: -1, y: 4}
   endPoint: {x: 0, y: -6}
   alternativeEndPoints: []
   beforeWaveDecorator: {fileID: 0}
-  middleWaveDecorator: {fileID: 0}
-  endWaveDecorator: {fileID: 0}
+  middleWaveDecorator: {fileID: 11400000, guid: e8ee02c48c85944d8a22cf231975011e, type: 2}
+  endWaveDecorator: {fileID: 11400000, guid: 4e61b3d6f278b40048569a647e2138a8, type: 2}

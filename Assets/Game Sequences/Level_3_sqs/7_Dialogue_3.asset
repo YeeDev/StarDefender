@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dd6979a7a53724f2e8a17aa597b2e3a8, type: 3}
-  m_Name: 1_Dialogue_X
+  m_Name: 7_Dialogue_3
   m_EditorClassIdentifier: 
-  dialogue: "Get ready, Commander! Multiple ships incoming!<color=green>\u25BC</color>"
+  dialogue: "Fast waves incoming!<color=green>\u25BC</color>"
   beforePrintDecorator: {fileID: 11400000, guid: 3c5005008355545b980b3043995d0745, type: 2}
   afterPrintDecorator: {fileID: 11400000, guid: 70d2f27a4ed404f589ce9af57cb63136, type: 2}
