@@ -5,20 +5,17 @@ namespace Yee.VFX
 {
 	public class CameraShaker : MonoBehaviour
 	{
-		[SerializeField] [Range(1, 10)] float shakeDuration = 1f;
-		[SerializeField] [Range(0.1f, 5f)] float shakeIntensity = 1f;
-
 		Vector3 originalPos;
 
 		private void Awake() { originalPos = transform.position; }
 
-		public IEnumerator Shake()
+		public IEnumerator Shake(float duration, float intensity)
 		{
-			float shakeTimer = shakeDuration;
+			float shakeTimer = duration;
 			while (shakeTimer > 0)
 			{
 				shakeTimer -= Time.deltaTime;
-				transform.position = originalPos + Random.insideUnitSphere * shakeIntensity;
+				transform.position = originalPos + Random.insideUnitSphere * intensity;
 
 				yield return new WaitForEndOfFrame();
 			}

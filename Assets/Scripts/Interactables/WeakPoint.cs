@@ -45,19 +45,25 @@ namespace StarDef.Interactables
         private void TakeDamage()
         {
             EnergyGenerator generatorToDestroy = generatorsQueue.Count > 0 ? generatorsQueue.Dequeue() : generatorsAttached[0];
+            health.TakeDamage(generatorToDestroy.IsOn);
             if (generatorToDestroy.IsOn) { generatorToDestroy.DamageGenerator(); }
-
-            health.TakeDamage();
         }
 
         private void PlayVFX()
         {
             audioSource.Play();
             explosionParticles.Play();
-            StartCoroutine(cameraShaker.Shake());
             ChangeColorToDamage();
+            ShakeCamera();
 
             if (generatorsQueue.Count > 0) { Invoke("ChangeColorToRegular", 1); }
+        }
+
+        private void ShakeCamera()
+        {
+            float duration = health.NoHealth ? Mathf.Infinity : 1f;
+            float intensity = health.NoHealth ? 0.15f : 0.25f;
+            StartCoroutine(cameraShaker.Shake(duration, intensity));
         }
 
         private void ChangeColorToDamage() { indicator.material.color = damagedColor; }
