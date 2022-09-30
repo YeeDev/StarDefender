@@ -11,7 +11,7 @@ namespace StarDef.Core
 
         public bool NoHealth { get => totalHealth <= 0; }
 
-        public void AddHealth(int amountToAdd) { totalHealth += amountToAdd;Debug.Log(totalHealth); }
+        public void AddHealth(int amountToAdd) { totalHealth += amountToAdd; }
 
         public void TakeDamage(bool lowerHealth)
         {
