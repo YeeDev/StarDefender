@@ -13,6 +13,7 @@ namespace StarDef.Interactables
         [SerializeField] LayerMask enemyLayer = 0;
         [SerializeField] Transform towerHead = null;
         [SerializeField] Color enabledColor, disabledColor;
+        [SerializeField] AudioClip openClip, closeClip;
 
         bool controlEnabled;
         Animator animator;
@@ -64,6 +65,7 @@ namespace StarDef.Interactables
 
             animator.SetBool("IsOpen", !animator.GetBool("IsOpen"));
             generator.UsedBy = animator.GetBool("IsOpen") ? transform : null;
+            AudioSource.PlayClipAtPoint(animator.GetBool("IsOpen") ? openClip : closeClip, transform.position);
 
             ChangeIndicatorsColor();
         }
