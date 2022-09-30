@@ -14,13 +14,12 @@ namespace StarDef.Interactables
         [SerializeField] MeshRenderer indicator = null;
         [SerializeField] Color damagedColor = Color.red;
 
-        bool weakPointDestroyed;
         Color regularColor;
         HealthStat health;
         CameraShaker cameraShaker;
         Queue<EnergyGenerator> generatorsQueue = new Queue<EnergyGenerator>();
 
-        public bool IsDestroyed { get => weakPointDestroyed; }
+        public bool IsDestroyed { get => generatorsQueue.Count <= 0; }
 
         private void Awake()
         {
@@ -28,18 +27,27 @@ namespace StarDef.Interactables
             cameraShaker = FindObjectOfType<CameraShaker>();
             regularColor = indicator.material.color;
             foreach (var item in generatorsAttached) { generatorsQueue.Enqueue(item); }
+
+            health.AddHealth(generatorsAttached.Length);
         }
 
         private void OnTriggerEnter(Collider other)
         {
             if (other.CompareTag("Missile"))
             {
-                weakPointDestroyed = true;
                 Destroy(other.gameObject);
 
                 TakeDamage();
                 PlayVFX();
             }
+        }
+
+        private void TakeDamage()
+        {
+            EnergyGenerator generatorToDestroy = generatorsQueue.Count > 0 ? generatorsQueue.Dequeue() : generatorsAttached[0];
+            if (generatorToDestroy.IsOn) { generatorToDestroy.DamageGenerator(); }
+
+            health.TakeDamage();
         }
 
         private void PlayVFX()
@@ -54,11 +62,5 @@ namespace StarDef.Interactables
 
         private void ChangeColorToDamage() { indicator.material.color = damagedColor; }
         private void ChangeColorToRegular() { indicator.material.color = regularColor; }
-
-        private void TakeDamage()
-        {
-            EnergyGenerator generatorToDestroy = generatorsQueue.Count > 0 ? generatorsQueue.Dequeue() : generatorsAttached[0];
-            health.TakeDamage(generatorToDestroy);
-        }
     }
 }
