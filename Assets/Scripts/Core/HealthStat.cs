@@ -1,23 +1,15 @@
 using UnityEngine;
-using StarDef.Tiles;
 
 namespace StarDef.Core
 {
     public class HealthStat : MonoBehaviour
     {
-        int totalGenerators;
+        int totalHealth;
 
-        public bool NoHealth { get => totalGenerators <= 0; }
+        public bool NoHealth { get => totalHealth <= 0; }
 
-        private void Awake() { totalGenerators = FindObjectsOfType<EnergyGenerator>().Length; }
+        public void AddHealth(int amountToAdd) { totalHealth += amountToAdd; }
 
-        public void TakeDamage(EnergyGenerator energyGenerator)
-        {
-            if (energyGenerator.IsOn)
-            {
-                energyGenerator.DamageGenerator();
-                totalGenerators--;
-            }
-        }
+        public void TakeDamage() { totalHealth--; }
     }
 }
