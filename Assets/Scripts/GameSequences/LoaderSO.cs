@@ -21,5 +21,7 @@ namespace StarDef.GameSequences
 
             SceneManager.LoadScene(sceneToLoad);
         }
+
+        public void LoadNextLevelUI() { SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1); }
     }
 }
