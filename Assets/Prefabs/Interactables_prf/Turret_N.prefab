@@ -5624,6 +5624,8 @@ MonoBehaviour:
   towerHead: {fileID: 7511932693144393930}
   enabledColor: {r: 0, g: 1, b: 0.034408808, a: 1}
   disabledColor: {r: 1, g: 1, b: 1, a: 0}
+  openClip: {fileID: 8300000, guid: 4a9215199f36e41c99424357c426d23a, type: 3}
+  closeClip: {fileID: 8300000, guid: 09d716d732e994ac7b40405ec8b752e0, type: 3}
 --- !u!1 &6997310685270340006
 GameObject:
   m_ObjectHideFlags: 0
