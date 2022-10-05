@@ -19,6 +19,7 @@ namespace StarDef.Enemies
         int objectToMoveTo = 0;
         bool rotating;
         bool missileFired;
+        bool isDestroyed;
         Animator anm;
         List<Transform> path = null;
         SequenceVariableHolder infoHolder;
@@ -93,7 +94,7 @@ namespace StarDef.Enemies
         private void TakeDamage()
         {
             health--;
-            if (health <= 0)
+            if (health <= 0 && !isDestroyed)
             {
                 Instantiate(explosionParticles, transform.position, Quaternion.identity);
                 Remove();
@@ -103,7 +104,11 @@ namespace StarDef.Enemies
         //Also Called in Animation
         private void Remove()
         {
+            if (isDestroyed) { return; }
+
+            isDestroyed = true;
             infoHolder.RemoveActiveEnemy();
+            Debug.Log(infoHolder.GetActiveEnemies);
             Destroy(gameObject);
         }
     }
