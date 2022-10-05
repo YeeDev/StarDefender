@@ -94,6 +94,7 @@ namespace StarDef.Enemies
         private void TakeDamage()
         {
             health--;
+            anm.SetTrigger("TakeDamage");
             if (health <= 0 && !isDestroyed)
             {
                 Instantiate(explosionParticles, transform.position, Quaternion.identity);
@@ -108,7 +109,6 @@ namespace StarDef.Enemies
 
             isDestroyed = true;
             infoHolder.RemoveActiveEnemy();
-            Debug.Log(infoHolder.GetActiveEnemies);
             Destroy(gameObject);
         }
     }
